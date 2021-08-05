@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>D2 and D2R Boss and Monster Drop Simulator</title>
+  <meta name="author" content="github.com/pairofdocs">
+  <meta name="description" content="Simulate Diablo 2's random loot drop mechanic">
+
+  <!-- TODO: <meta property="og:image" content=""> -->
+  <meta property="og:description" content="Simulate Diablo 2's random loot drop mechanic">
+  <meta property="og:title" content="D2 and D2R Boss and Monster Drop Simulator">
+
+  <style type="text/css">
+    body {font-family: Arial, sans-serif; background-color: #312f40; color:#b7cee2}
+  </style>
+  <script type="text/javascript" src="./brython.js"></script>
+  <script type="text/javascript" src="./brython_stdlib.js"></script>
+
+</head>
+
+<body onload="brython(1)">
+  <h1> D2 and D2R Bossq and Monster Drop Simulator </h1>
+  <p id="par-1"> Loading data takes a couple of seconds. Once loaded click 'Run' </p>
+  <p id="par-2"> Andariel Quest, Hell, /players 1, 0MF </p>
+  
+  <button id="run" style="margin: 1em 0;"> Run </button> <br>
+  <div id="backimg-and-loot"> 
+    <img id="backimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="float:left; padding: 0 1em 0 0;"> 
+    <span id="loottxt"> Loot: <br> </span>
+  </div>
+
+<script type="text/python">
+from browser import document
+
+from lib.data_util import final_rolls_from_tc, name_from_armo_weap_misc
+
+def change(e):
+  # reset loot text area
+  document["loottxt"].html = "Loot: <br><br>"
+  drops = []
+  for i in range(7):
+    if len(drops) == 6:
+      break
+    loot_items = final_rolls_from_tc('Andarielq (H)', '1', '')  # Andariel hard coded
+    loot_items = [name_from_armo_weap_misc(it['rolleditemtc'], '0', it['rootclass']) for it in loot_items]   # expanded item names
+    if loot_items:
+      for loot_item in loot_items:
+          if len(drops) < 6:
+              drops.append(loot_item)
+  for drop in drops:
+    if "uni~" in drop:
+      if "failed uni~" in drop:
+        if 'potion' in drop.lower():
+          color = "#e8f4ff"         # default light
+        else:
+          color = "#e8e83a"     # yellow  
+          if "charm" in drop.lower():
+            color = "#4f7cfb"     # blue
+      else:
+        color = "#b77f00"     # gold
+    elif "set~" in drop:
+      if "failed set~" in drop:
+        if 'potion' in drop.lower():
+          color = "#e8f4ff"     # default light
+        else:
+          color = "#4f7cfb"   # blue
+      else:
+        color = "#11c511"     # green
+    elif "rare~" in drop:
+      if 'potion' in drop.lower():
+        color = "#e8f4ff"   # default light
+      else:
+        color = "#e8e83a"   # yellow  
+        if "charm" in drop.lower():
+          color = "#4f7cfb"     # blue
+    elif "magic~" in drop:
+      if 'potion' in drop.lower():
+        color = "#e8f4ff"   # default light
+      else:
+        color = "#4f7cfb"     # blue
+    elif "normal~" in drop:
+      color = "#e8f4ff"   # default light
+    elif ("essence of" in drop.lower() or " rune" in drop.lower() or "key of" in drop.lower() or "puzzlebox" in drop.lower()):
+      color = "#dc7409"     # orange
+    else:
+      # reset color
+      color = "#e8f4ff"         # default light
+    
+    document["loottxt"].html += '<div style="color:' + color + '">' + drop.split('~')[-1] + '</div>'
+
+document["run"].bind("click", change)
+document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'"
+</script>
+</body>
+
+</html>
