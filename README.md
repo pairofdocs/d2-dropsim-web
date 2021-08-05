@@ -4,6 +4,8 @@ The drop simulator uses item type and quality generating functions and data file
 - The code is open source and available [here](https://github.com/search?q=repo%3Apairofdocs%2Fd2-drop-simulator+language%3APython&type=Code)
 - Play here: https://pairofdocs.github.io/d2-dropsim-web/
 
+![App window with andy](./img/andyq_drop_bckgrd.jpg)
+
 
 ### Todos
 - Add difficulty levels, players setting, MF like in dropsim.py
