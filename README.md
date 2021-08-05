@@ -2,7 +2,7 @@
 
 The drop simulator uses item type and quality generating functions and data files from D2 (TreasureClassEx.txt, ItemRatio.txt, ...) to reproduce the game's random loot drop mechanic.
 - Play here: https://pairofdocs.github.io/d2-dropsim-web/
-- An offline drop simulator is also available [here](https://pairofdocs.github.io/d2-drop-simulator)
+- An offline drop simulator is also available [here](https://github.com/pairofdocs/d2-drop-simulator)
 
 [![App window with andy](./img/andyq_drop_bckgrd.jpg)](https://pairofdocs.github.io/d2-dropsim-web/)
 
