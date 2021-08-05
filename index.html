@@ -9,6 +9,7 @@
   <!-- TODO: <meta property="og:image" content=""> -->
   <meta property="og:description" content="Simulate Diablo 2's random loot drop mechanic">
   <meta property="og:title" content="D2 and D2R Boss and Monster Drop Simulator">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style type="text/css">
     body {font-family: Arial, sans-serif; background-color: #312f40; color:#b7cee2}
@@ -20,15 +21,20 @@
 
 <body onload="brython(1)">
   <h1> D2 and D2R Bossq and Monster Drop Simulator </h1>
-  <p id="par-1"> Loading data takes a couple of seconds. Once loaded click 'Run' </p>
+  <p id="par-1"> Loading data takes a couple of seconds... </p>
   <p id="par-2"> Andariel Quest, Hell, /players 1, 0MF </p>
   
-  <button id="run" style="margin: 1em 0;"> Run </button> <br>
-  <div id="backimg-and-loot"> 
-    <img id="backimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="float:left; padding: 0 1em 0 0;"> 
-    <span id="loottxt"> Loot: <br> </span>
+  <button id="run" style="margin: 0 0 1em;"> Run </button> <br>
+  <!-- organize divs into rows and columns. set display to table. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_images_side_by_side -->
+  <div id="backimg-and-loot" class="row" style="height: 440px; display: table;">  
+    <div class="column" style="float: left;"> <img id="backimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="padding: 0 1em 0 0; width: auto;"> </div>
+    <div id="loottxt" class="column" style="float: left;"> Loot: <br> </div>
   </div>
-
+  <br>
+  <div class="row" style="display: table;">
+    <p> Code available on <i class="fa fa-github"></i> <a href="https://github.com/pairofdocs/d2-dropsim-web/" style="color:#3392e6">github</a> </p>
+  </div>
+  
 <script type="text/python">
 from browser import document
 
@@ -91,6 +97,7 @@ def change(e):
 document["run"].bind("click", change)
 document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'"
 </script>
+
 </body>
 
 </html>
