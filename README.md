@@ -1,10 +1,10 @@
 ## Diablo 2 / D2R Bossq and Monster Drop Simulator
 
 The drop simulator uses item type and quality generating functions and data files from D2 (TreasureClassEx.txt, ItemRatio.txt, ...) to reproduce the game's random loot drop mechanic.
-- The code is open source and available [here](https://github.com/search?q=repo%3Apairofdocs%2Fd2-drop-simulator+language%3APython&type=Code)
 - Play here: https://pairofdocs.github.io/d2-dropsim-web/
+- An offline drop simulator is also available [here](https://pairofdocs.github.io/d2-drop-simulator)
 
-![App window with andy](./img/andyq_drop_bckgrd.jpg)
+[![App window with andy](./img/andyq_drop_bckgrd.jpg)](https://pairofdocs.github.io/d2-dropsim-web/)
 
 
 ### Todos
@@ -18,7 +18,6 @@ The drop simulator uses item type and quality generating functions and data file
 ### Credits and Tools
 - http://dropcalc.silospen.com/item.php
 - http://mfb.bplaced.net/dropcalc/dropcalc.php?lang=en&patch=113&mode=lod&interface=default&window=true
-- https://www.geeksforgeeks.org/create-first-gui-application-using-python-tkinter/
 - https://d2mods.info/forum/kb/viewarticle?a=368
 - https://d2mods.info/forum/kb/viewarticle?a=2
 - https://d2mods.info/forum/kb/viewarticle?a=320
