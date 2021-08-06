@@ -15,7 +15,7 @@
     body {font-family: Arial, sans-serif; background-color: #312f40; color:#b7cee2}
   </style>
   <script type="text/javascript" src="./brython.js"></script>
-  <script type="text/javascript" src="./brython_stdlib.js"></script>
+  <script type="text/javascript" src="./brython_modules.js"></script>
 </head>
 
 <body onload="brython(1)">
@@ -144,3 +144,8 @@ document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'"
 
 </body>
 </html>
+
+<!-- NEXT**   try pip installing brython and building brython.js with needed libs -->
+<!-- https://brython.info/static_doc/en/import.html -->
+<!-- To optimise imports, if Brython was installed by pip, you can generate a file brython_modules.js which only holds the modules used by the application.  -->
+<!-- brython-cli --modules     then use src="brython_modules.js"></script> -->
