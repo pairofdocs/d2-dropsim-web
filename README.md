@@ -1,6 +1,6 @@
 ## Diablo 2 / D2R Bossq and Monster Drop Simulator
 
-The drop simulator uses item type and quality generating functions and data files from D2 (TreasureClassEx.txt, ItemRatio.txt, ...) to reproduce the game's random loot drop mechanic.
+The drop simulator uses item type and quality generating functions and data files from D2 (TreasureClassEx.txt, ItemRatio.txt, ...) to reproduce the game's random loot drop mechanic. Quest bosses and other units like Cows, Countess, Council are available.
 - Play here: https://pairofdocs.github.io/d2-dropsim-web/
 - An offline drop simulator is also available [here](https://github.com/pairofdocs/d2-drop-simulator)
 
