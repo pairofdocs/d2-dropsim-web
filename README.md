@@ -5,11 +5,10 @@ The drop simulator uses item type and quality generating functions and data file
 - An offline drop simulator is also available [here](https://github.com/pairofdocs/d2-drop-simulator)
 
 [![App window with andy](./img/andyq_drop_bckgrd.jpg)](https://pairofdocs.github.io/d2-dropsim-web/)
+[![App window with baal](./img/baalq_drop_bckgrd.jpg)](https://pairofdocs.github.io/d2-dropsim-web/)
 
 
-### Todos
-- Add difficulty levels, players setting, MF like in dropsim.py
-- Add Quest bosses and other units like Cows, Countess, Council from dropsim.py
+### Todo
 - Add Baal image
 - Enable/disable check for same unique per run
 - Ethereal status

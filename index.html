@@ -16,39 +16,83 @@
   </style>
   <script type="text/javascript" src="./brython.js"></script>
   <script type="text/javascript" src="./brython_stdlib.js"></script>
-
 </head>
 
 <body onload="brython(1)">
   <h1> D2 and D2R Bossq and Monster Drop Simulator </h1>
   <p id="par-1"> Loading data takes a couple of seconds... </p>
-  <p id="par-2"> Andariel Quest, Hell, /players 1, 0MF </p>
   
-  <button id="run" style="margin: 0 0 1em;"> Run </button> <br>
+  <!-- selections -->
+  <div> 
+    <select id="selectMon" onchange="changeImg()" style="padding: 1px 2px;">
+      <option value="Andarielq">Andarielq</option>
+      <option value="Durielq">Durielq</option>
+      <option value="Mephistoq">Mephistoq</option>
+      <option value="Diabloq">Diabloq</option>
+      <option value="Baalq">Baalq</option>
+      <option value="Cow">Cow</option>
+      <option value="Countess">Countess</option>
+      <option value="Council">Council</option>
+    </select>
+    <select id="selectDiff" style="padding: 1px 2px;">
+      <option value="Normal">Normal</option>
+      <option value="Nightmare">Nightmare</option>
+      <option value="Hell">Hell</option>
+    </select>
+    <select id="selectPlayers" style="padding: 1px 2px;">
+      <option value="players 1">players 1</option>
+      <option value="players 2">players 2</option>
+      <option value="players 3">players 3</option>
+      <option value="players 4">players 4</option>
+      <option value="players 5">players 5</option>
+      <option value="players 6">players 6</option>
+      <option value="players 7">players 7</option>
+      <option value="players 8">players 8</option>
+    </select>
+    <input type="text" id="mftext" name="mftext" size="5" value="0" style="text-align: center;"> MF
+  </div>
+  
+  <button id="run" style="margin: 1em 0 1em;"> Run </button> <br>
   <!-- organize divs into rows and columns. set display to table. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_images_side_by_side -->
-  <div id="backimg-and-loot" class="row" style="height: 440px; display: table;">  
-    <div class="column" style="float: left;"> <img id="backimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="padding: 0 1em 0 0; width: auto;"> </div>
+  <div id="monimg-and-loot" class="row" style="height: 440px; display: table;">  
+    <div class="column" style="float: left;"> <img id="monimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="padding: 0 1em 0 0; width: auto;"> </div>
     <div id="loottxt" class="column" style="float: left;"> Loot: <br> </div>
   </div>
   <br>
   <div class="row" style="display: table;">
     <p> Code available on <i class="fa fa-github"></i> <a href="https://github.com/pairofdocs/d2-dropsim-web/" style="color:#3392e6">github</a> </p>
   </div>
-  
+ 
+<script>
+  var monStrImg = {"Andarielq":"./img/andy-d2r-resize.png", "Durielq":"./img/duri-d2r-resize2.png", "Mephistoq":"./img/meph-d2r-resize2.png", "Diabloq":"./img/diab-d2r-resize2.png", "Baalq":"./img/arreat-d2r-resize2.png", "Cow":"./img/cowlvl-d2r-resize2.png", "Countess":"./img/countess-d2r-resize2.png", "Council":"./img/council-d2r-resize2.png"};
+
+  function changeImg() {
+    document.getElementById("monimg").src = monStrImg[document.getElementById("selectMon").value];
+    document.getElementById("loottxt").innerHTML = "Loot: <br><br>";
+  }
+</script>
+
 <script type="text/python">
 from browser import document
 
 from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
+DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'}
+TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 7, "Cow": 1, "Countess": 1, "Council": 3}  # data from TreasureClassEx.txt
+
 def change(e):
-  # reset loot text area
+  # reset loot text area and prepare variables
   document["loottxt"].html = "Loot: <br><br>"
   drops = []
-  for i in range(7):
+  monstr = document["selectMon"].value + DIFFICULTIES[document["selectDiff"].value]
+  players_str = (document["selectPlayers"].value).split()[-1]
+  mf_str = document["mftext"].value
+
+  for i in range(TCPicks[document["selectMon"].value]):
     if len(drops) == 6:
       break
-    loot_items = final_rolls_from_tc('Andarielq (H)', '1', '')  # Andariel hard coded
-    loot_items = [name_from_armo_weap_misc(it['rolleditemtc'], '0', it['rootclass']) for it in loot_items]   # expanded item names
+    loot_items = final_rolls_from_tc(monstr, players_str, '')  # Hell difficulty hard-coded
+    loot_items = [name_from_armo_weap_misc(it['rolleditemtc'], mf_str, it['rootclass']) for it in loot_items]   # expanded item names
     if loot_items:
       for loot_item in loot_items:
           if len(drops) < 6:
@@ -99,5 +143,4 @@ document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'"
 </script>
 
 </body>
-
 </html>
