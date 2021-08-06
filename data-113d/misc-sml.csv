@@ -1,0 +1,153 @@
+name,*name,level,levelreq,rarity,code,namestr,type
+elixir,elixir,21,0,4,elx,elx,elix
+Healing Potion,Healing Potion,0,0,1,hpo,hpo,hpot
+Mana Potion,Mana Potion,0,0,1,mpo,mpo,mpot
+Full Healing Potion,Full Healing Potion,0,0,2,hpf,hpf,hpot
+Full Mana Potion,Full Mana Potion,0,0,2,mpf,mpf,mpot
+Stamina Potion,Stamina Potion,0,0,1,vps,vps,spot
+Antidote Potion,Antidote Potion,0,0,1,yps,yps,apot
+Rejuv Potion,Rejuv Potion,0,0,2,rvs,rvs,rpot
+Full Rejuv Potion,Full Rejuv Potion,0,0,2,rvl,rvl,rpot
+Thawing Potion,Thawing Potion,0,0,2,wms,wms,wpot
+Town Portal Book,Town Portal Book,0,0,2,tbk,tbk,book
+Identify Book,Identify Book,0,0,2,ibk,ibk,book
+amulet,amulet,1,0,4,amu,amu,amul
+viper amulet,viper amulet,15,0,4,vip,vip,amul
+ring,ring,1,0,4,rin,rin,ring
+gold,gold,0,0,1,gld,gld,gold
+Bark Scroll,Bark Scroll,0,0,0,bks,bks,ques
+deciphered Bark Scroll,deciphered Bark Scroll,0,0,0,bkd,bkd,ques
+Arrows,Arrows,0,0,1,aqv,aqv,bowq
+Torch,Torch,0,0,0,tch,tch,torc
+Bolts,Bolts,0,0,1,cqv,cqv,xboq
+Town Portal Scroll,Town Portal Scroll,0,0,2,tsc,tsc,scro
+Identify Scroll,Identify Scroll,0,0,2,isc,isc,scro
+Not used,Heart,0,0,1,hrt,hrt,body
+Not used,Brain,0,0,1,brz,brz,body
+Not used,Jawbone,0,0,1,jaw,jaw,body
+Not used,Eye,0,0,1,eyz,eyz,body
+Not used,Horn,0,0,1,hrn,hrn,body
+Not used,Tail,0,0,1,tal,tal,body
+Not used,Flag,0,0,1,flg,flg,body
+Not used,Fang,0,0,1,fng,fng,body
+Not used,Quill,0,0,1,qll,qll,body
+Not used,Soul,0,0,1,sol,sol,body
+Not used,Scalp,0,0,1,scz,scz,body
+Not used,Spleen,0,0,1,spe,spe,body
+Skeleton Key,Skeleton Key,0,0,1,key,key,key
+Mephisto Key,Mephisto Key,0,0,1,luv,luv,key
+scroll of self resurrect,scroll of self resurrect,0,0,999,xyz,xyz,ques
+jade figurine,jade figurine,0,0,0,j34,j34,ques
+gold bird,gold bird,0,0,0,g34,g34,ques
+lam esen's tome,lam esen's tome,0,0,0,bbb,bbb,ques
+Horadric Cube,Horadric Cube,0,0,0,box,box,ques
+Scroll of Horadric Quest Info,Scroll of Horadric Quest Info,0,0,999,tr1,tr1,ques
+Mephisto SoulStone,Mephisto SoulStone,0,0,999,mss,mss,ques
+Book of Skill,Book of Skill,0,0,999,ass,ass,ques
+KhalimEye,KhalimEye,0,0,1,qey,qey,ques
+KhalimHeart,KhalimHeart,0,0,1,qhr,qhr,ques
+KhalimBrain,KhalimBrain,0,0,1,qbr,qbr,ques
+Player Ear,Player Ear,0,0,1,ear,ear,play
+Chipped Amethyst,Chipped Amethyst,0,1,2,gcv,gcv,gema
+Flawed Amethyst,Flawed Amethyst,0,5,3,gfv,gfv,gema
+Amethyst,Amethyst,0,12,4,gsv,gsv,gema
+Flawless Amethyst,Flawless Amethyst,0,15,5,gzv,gzv,gema
+Perfect Amethyst,Perfect Amethyst,0,18,6,gpv,gpv,gema
+Chipped Topaz,Chipped Topaz,0,1,3,gcy,gcy,gemt
+Flawed Topaz,Flawed Topaz,0,5,4,gfy,gfy,gemt
+Topaz,Topaz,0,12,5,gsy,gsy,gemt
+Flawless Topaz,Flawless Topaz,0,15,6,gly,gly,gemt
+Perfect Topaz,Perfect Topaz,0,18,7,gpy,gpy,gemt
+Chipped Saphire,Chipped Saphire,0,1,4,gcb,gcb,gems
+Flawed Saphire,Flawed Saphire,0,5,5,gfb,gfb,gems
+Saphire,Saphire,0,12,6,gsb,gsb,gems
+Flawless Saphire,Flawless Saphire,0,15,7,glb,glb,gems
+Perfect Saphire,Perfect Saphire,0,18,8,gpb,gpb,gems
+Chipped Emerald,Chipped Emerald,0,1,5,gcg,gcg,geme
+Flawed Emerald,Flawed Emerald,0,5,6,gfg,gfg,geme
+Emerald,Emerald,0,12,7,gsg,gsg,geme
+Flawless Emerald,Flawless Emerald,0,15,8,glg,glg,geme
+Perfect Emerald,Perfect Emerald,0,18,9,gpg,gpg,geme
+Chipped Ruby,Chipped Ruby,0,1,6,gcr,gcr,gemr
+Flawed Ruby,Flawed Ruby,0,5,7,gfr,gfr,gemr
+Ruby,Ruby,0,12,8,gsr,gsr,gemr
+Flawless Ruby,Flawless Ruby,0,15,9,glr,glr,gemr
+Perfect Ruby,Perfect Ruby,0,18,10,gpr,gpr,gemr
+Chipped Diamond,Chipped Diamond,0,1,7,gcw,gcw,gemd
+Flawed Diamond,Flawed Diamond,0,5,8,gfw,gfw,gemd
+Diamond,Diamond,0,12,9,gsw,gsw,gemd
+Flawless Diamond,Flawless Diamond,0,15,10,glw,glw,gemd
+Perfect Diamond,Perfect Diamond,0,18,11,gpw,gpw,gemd
+Minor Healing Potion,Minor Healing Potion,0,0,1,hp1,hp1,hpot
+Light Healing Potion,Light Healing Potion,0,0,1,hp2,hp2,hpot
+Healing Potion,Healing Potion,0,0,1,hp3,hp3,hpot
+Greater Healing Potion,Greater Healing Potion,0,0,1,hp4,hp4,hpot
+Super Healing Potion,Super Healing Potion,0,0,1,hp5,hp5,hpot
+Minor Mana Potion,Minor Mana Potion,0,0,1,mp1,mp1,mpot
+Light Mana Potion,Light Mana Potion,0,0,1,mp2,mp2,mpot
+Mana Potion,Mana Potion,0,0,1,mp3,mp3,mpot
+Greater Mana Potion,Greater Mana Potion,0,0,1,mp4,mp4,mpot
+Super Mana Potion,Super Mana Potion,0,0,1,mp5,mp5,mpot
+Chipped Skull,Chipped Skull,0,1,8,skc,skc,gemz
+Flawed Skull,Flawed Skull,0,5,9,skf,skf,gemz
+Skull,Skull,0,12,10,sku,sku,gemz
+Flawless Skull,Flawless Skull,0,15,11,skl,skl,gemz
+Perfect Skull,Perfect Skull,0,18,12,skz,skz,gemz
+Expansion,Expansion,,,,,,
+herb,herb,3,0,3,hrb,hrb,herb
+Charm Small,Charm Small,28,0,4,cm1,cm1,scha
+Charm Medium,Charm Medium,14,0,8,cm2,cm2,mcha
+Charm Large,Charm Large,1,0,12,cm3,cm3,lcha
+Small Red Potion,Small Red Potion,0,0,1,rps,rps,hpot
+Large Red Potion,Large Red Potion,0,0,1,rpl,rpl,hpot
+Small Blue Potion,Small Blue Potion,0,0,1,bps,bps,mpot
+Large Blue Potion,Large Blue Potion,0,0,1,bpl,bpl,mpot
+El Rune,El,11,11,1,r01,r01,rune
+Eld Rune,Eld,11,11,1,r02,r02,rune
+Tir Rune,Tir,13,13,2,r03,r03,rune
+Nef Rune,Nef,13,13,2,r04,r04,rune
+Eth Rune,Eth,15,15,3,r05,r05,rune
+Ith Rune,Ith,15,15,3,r06,r06,rune
+Tal Rune,Tal,17,17,4,r07,r07,rune
+Ral Rune,Ral,19,19,5,r08,r08,rune
+Ort Rune,Ort,21,21,6,r09,r09,rune
+Thul Rune,Thul,23,23,7,r10,r10,rune
+Amn Rune,Amn,25,25,8,r11,r11,rune
+Sol Rune,Sol,27,27,9,r12,r12,rune
+Shael Rune,Shael,29,29,10,r13,r13,rune
+Dol Rune,Dol,31,31,11,r14,r14,rune
+Hel Rune,Hel,33,0,12,r15,r15,rune
+Io Rune,Io,35,35,13,r16,r16,rune
+Lum Rune,Lum,37,37,14,r17,r17,rune
+Ko Rune,Ko,39,39,15,r18,r18,rune
+Fal Rune,Fal,41,41,16,r19,r19,rune
+Lem Rune,Lem,43,43,17,r20,r20,rune
+Pul Rune,Pul,45,45,18,r21,r21,rune
+Um Rune,Um,47,47,19,r22,r22,rune
+Mal Rune,Mal,49,49,20,r23,r23,rune
+Ist Rune,Ist,51,51,21,r24,r24,rune
+Gul Rune,Gul,53,53,22,r25,r25,rune
+Vex Rune,Vex,55,55,23,r26,r26,rune
+Ohm Rune,Ohm,57,57,24,r27,r27,rune
+Lo Rune,Lo,59,59,25,r28,r28,rune
+Sur Rune,Sur,61,61,26,r29,r29,rune
+Ber Rune,Ber,63,63,27,r30,r30,rune
+Jah Rune,Jah,65,65,28,r31,r31,rune
+Cham Rune,Cham,67,67,29,r32,r32,rune
+Zod Rune,Zod,69,69,30,r33,r33,rune
+Jewel,Jewel,1,0,8,jew,jew,jewl
+Maguffin,ice,0,0,999,ice,ice,ques
+Scroll,Scroll,0,0,0,0sc,0sc,scro
+Scroll of Malah - Boost Resistances,Scroll of Malah - Boost Resistances,0,0,999,tr2,tr2,ques
+Key of Terror,Pandemonium Key 1,0,0,1,pk1,pk1,ques
+Key of Hate,Pandemonium Key 2,0,0,1,pk2,pk2,ques
+Key of Destruction,Pandemonium Key 3,0,0,1,pk3,pk3,ques
+Diablo's Horn,Diablo's Horn,0,0,1,dhn,dhn,ques
+Baal's Eye,Baal's Eye,0,0,1,bey,bey,ques
+Mephisto's Brain,Mephisto's Brain,0,0,1,mbr,mbr,ques
+Token of Absolution,Token of Absolution,0,0,999,toa,toa,ques
+Twisted Essence of Suffering,Twisted Essence of Suffering,0,0,1,tes,tes,ques
+Charged Essence of Hatred,Charged Essence of Hatred,0,0,1,ceh,ceh,ques
+Burning Essence of Terror,Burning Essence of Terror,0,0,1,bet,bet,ques
+Festering Essence of Destruction,Festering Essence of Destruction,0,0,1,fed,fed,ques
+Standard,Standard,90,90,4,std,std,ques

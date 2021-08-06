@@ -1,0 +1,204 @@
+name,rarity,level,levelreq,code,namestr,type
+Cap,1,1,0,cap,cap,helm
+Skull Cap,4,5,0,skp,skp,helm
+Helm,4,11,0,hlm,hlm,helm
+Full Helm,4,15,0,fhl,fhl,helm
+Great Helm,4,23,0,ghm,ghm,helm
+Crown,4,29,0,crn,crn,helm
+Mask,4,19,0,msk,msk,helm
+Quilted Armor,1,1,0,qui,qui,tors
+Leather Armor,2,3,0,lea,lea,tors
+Hard Leather Armor,3,5,0,hla,hla,tors
+Studded Leather,4,8,0,stu,stu,tors
+Ring Mail,4,11,0,rng,rng,tors
+Scale Mail,4,13,0,scl,scl,tors
+Chain Mail,4,15,0,chn,chn,tors
+Breast Plate,4,18,0,brs,brs,tors
+Splint Mail,4,20,0,spl,spl,tors
+Plate Mail,4,24,0,plt,plt,tors
+Field Plate,4,28,0,fld,fld,tors
+Gothic Plate,4,32,0,gth,gth,tors
+Full Plate Mail,4,37,0,ful,ful,tors
+Ancient Armor,4,40,0,aar,aar,tors
+Light Plate,4,35,0,ltp,ltp,tors
+Buckler,2,1,0,buc,buc,shie
+Small Shield,3,5,0,sml,sml,shie
+Large Shield,4,11,0,lrg,lrg,shie
+Kite Shield,4,15,0,kit,kit,shie
+Tower Shield,4,22,0,tow,tow,shie
+Gothic Shield,4,30,0,gts,gts,shie
+Gloves,1,3,0,lgl,lgl,glov
+Heavy Gloves,1,7,0,vgl,vgl,glov
+Bracers,2,12,0,mgl,mgl,glov
+Light Gauntlets,3,20,0,tgl,tgl,glov
+Gauntlets(H),4,27,0,hgl,hgl,glov
+Leather Boots,1,3,0,lbt,lbt,boot
+Heavy Boots,1,7,0,vbt,vbt,boot
+Chain Boots,2,12,0,mbt,mbt,boot
+Light Plate Boots,3,20,0,tbt,tbt,boot
+Plate Boots,4,27,0,hbt,hbt,boot
+Sash(L),1,3,0,lbl,lbl,belt
+Light Belt,1,7,0,vbl,vbl,belt
+Belt(M),2,12,0,mbl,mbl,belt
+Heavy Belt,2,20,0,tbl,tbl,belt
+Girdle,3,27,0,hbl,hbl,belt
+Bone Helm,2,22,0,bhm,bhm,helm
+Bone Shield,2,19,0,bsh,bsh,shie
+Spiked Shield,3,11,0,spk,spk,shie
+War Hat,1,34,22,xap,xap,helm
+Sallet,4,37,25,xkp,xkp,helm
+Casque,4,42,25,xlm,xlm,helm
+Basinet,4,45,25,xhl,xhl,helm
+Winged Helm,4,51,25,xhm,xhm,helm
+Grand Crown,4,55,25,xrn,xrn,helm
+Death Mask,4,48,25,xsk,xsk,helm
+Ghost Armor,1,34,22,xui,xui,tors
+Serpentskin Armor,2,36,24,xea,xea,tors
+Demonhide Armor,3,37,25,xla,xla,tors
+Trellised Armor,4,40,25,xtu,xtu,tors
+Linked Mail,4,42,25,xng,xng,tors
+Tigulated Mail,4,43,25,xcl,xcl,tors
+Mesh Armor,4,45,25,xhn,xhn,tors
+Cuirass,4,47,25,xrs,xrs,tors
+Russet Armor,4,49,25,xpl,xpl,tors
+Templar Coat,4,52,25,xlt,xlt,tors
+Sharktooth Armor,4,55,25,xld,xld,tors
+Embossed Plate,4,58,25,xth,xth,tors
+Chaos Armor,4,61,25,xul,xul,tors
+Ornate Armor,4,64,25,xar,xar,tors
+Mage Plate,4,60,25,xtp,xtp,tors
+Defender,2,34,22,xuc,xuc,shie
+Round Shield,3,37,25,xml,xml,shie
+Scutum,4,42,25,xrg,xrg,shie
+Dragon Shield,4,45,25,xit,xit,shie
+Pavise,4,50,25,xow,xow,shie
+Ancient Shield,4,56,25,xts,xts,shie
+Demonhide Gloves,1,33,21,xlg,xlg,glov
+Sharkskin Gloves,1,39,25,xvg,xvg,glov
+Heavy Bracers,2,43,25,xmg,xmg,glov
+Battle Gauntlets,3,49,25,xtg,xtg,glov
+War Gauntlets,4,54,25,xhg,xhg,glov
+Demonhide Boots,1,36,24,xlb,xlb,boot
+Sharkskin Boots,1,39,25,xvb,xvb,boot
+Mesh Boots,2,43,25,xmb,xmb,boot
+Battle Boots,3,49,25,xtb,xtb,boot
+War Boots,4,54,25,xhb,xhb,boot
+Demonhide Sash,1,36,24,zlb,zlb,belt
+Sharkskin Belt,1,39,25,zvb,zvb,belt
+Mesh Belt,2,43,25,zmb,zmb,belt
+Battle Belt,2,49,25,ztb,ztb,belt
+War Belt,3,54,25,zhb,zhb,belt
+Grim Helm,2,50,25,xh9,xh9,helm
+Grim Shield,2,48,25,xsh,xsh,shie
+Barbed Shield,3,42,25,xpk,xpk,shie
+Expansion,,,,,,
+Wolf Head,1,4,3,dr1,dr1,pelt
+Hawk Helm,1,8,6,dr2,dr2,pelt
+Antlers,1,16,12,dr3,dr3,pelt
+Falcon Mask,1,20,15,dr4,dr4,pelt
+Spirit Mask,1,24,18,dr5,dr5,pelt
+Jawbone Cap,2,4,3,ba1,ba1,phlm
+Fanged Helm,2,8,6,ba2,ba2,phlm
+Horned Helm,2,16,12,ba3,ba3,phlm
+Assault Helmet,2,20,15,ba4,ba4,phlm
+Avenger Guard,2,24,18,ba5,ba5,phlm
+Targe,2,4,3,pa1,pa1,ashd
+Rondache,2,8,6,pa2,pa2,ashd
+Heraldic Shield,2,16,12,pa3,pa3,ashd
+Aerin Shield,2,20,15,pa4,pa4,ashd
+Crown Shield,2,24,18,pa5,pa5,ashd
+Preserved Head,1,4,3,ne1,ne1,head
+Zombie Head,1,8,6,ne2,ne2,head
+Unraveller Head,1,16,12,ne3,ne3,head
+Gargoyle Head,1,20,15,ne4,ne4,head
+Demon Head,1,24,18,ne5,ne5,head
+Circlet,1,24,16,ci0,ci0,circ
+Coronet,1,52,39,ci1,ci1,circ
+Tiara,1,70,52,ci2,ci2,circ
+Diadem,1,85,64,ci3,ci3,circ
+Shako,1,58,43,uap,uap,helm
+Hydraskull,4,63,47,ukp,ukp,helm
+Armet,4,68,51,ulm,ulm,helm
+Giant Conch,4,54,40,uhl,uhl,helm
+Spired Helm,4,79,59,uhm,uhm,helm
+Corona,4,85,66,urn,urn,helm
+Demonhead,4,74,55,usk,usk,helm
+Dusk Shroud,1,65,49,uui,uui,tors
+Wyrmhide,2,67,50,uea,uea,tors
+Scarab Husk,3,68,51,ula,ula,tors
+Wire Fleece,4,70,53,utu,utu,tors
+Diamond Mail,4,72,54,ung,ung,tors
+Loricated Mail,4,73,55,ucl,ucl,tors
+Boneweave,4,62,47,uhn,uhn,tors
+Great Hauberk,4,75,56,urs,urs,tors
+Balrog Skin,4,76,57,upl,upl,tors
+Hellforged Plate,4,78,59,ult,ult,tors
+Kraken Shell,4,81,61,uld,uld,tors
+Lacquered Plate,4,82,62,uth,uth,tors
+Shadow Plate,4,83,64,uul,uul,tors
+Sacred Armor,4,85,66,uar,uar,tors
+Archon Plate,4,84,63,utp,utp,tors
+Heater,2,58,43,uuc,uuc,shie
+Luna,3,61,45,uml,uml,shie
+Hyperion,4,64,48,urg,urg,shie
+Monarch,4,72,54,uit,uit,shie
+Aegis,4,79,59,uow,uow,shie
+Ward,4,84,63,uts,uts,shie
+Bramble Mitts,1,57,42,ulg,ulg,glov
+Vampirebone Gloves,1,63,47,uvg,uvg,glov
+Vambraces,2,69,51,umg,umg,glov
+Crusader Gauntlets,3,76,57,utg,utg,glov
+Ogre Gauntlets,4,85,64,uhg,uhg,glov
+Wyrmhide Boots,1,60,45,ulb,ulb,boot
+Scarabshell Boots,1,66,49,uvb,uvb,boot
+Boneweave Boots,2,72,54,umb,umb,boot
+Mirrored Boots,3,81,60,utb,utb,boot
+Myrmidon Greaves,4,85,65,uhb,uhb,boot
+Spiderweb Sash,1,61,46,ulc,ulc,belt
+Vampirefang Belt,1,68,51,uvc,uvc,belt
+Mithril Coil,2,75,56,umc,umc,belt
+Troll Belt,2,82,62,utc,utc,belt
+Colossus Girdle,3,85,67,uhc,uhc,belt
+Bone Visage,2,84,63,uh9,uh9,helm
+Troll Nest,2,76,57,ush,ush,shie
+Blade Barrier,3,68,51,upk,upk,shie
+Alpha Helm,1,35,26,dr6,dr6,pelt
+Griffon Headress,1,40,30,dr7,dr7,pelt
+Hunter's Guise,1,46,29,dr8,dr8,pelt
+Sacred Feathers,1,50,32,dr9,dr9,pelt
+Totemic Mask,1,55,41,dra,dra,pelt
+Jawbone Visor,2,33,25,ba6,ba6,phlm
+Lion Helm,2,38,29,ba7,ba7,phlm
+Rage Mask,2,44,29,ba8,ba8,phlm
+Savage Helmet,2,49,32,ba9,ba9,phlm
+Slayer Guard,2,54,40,baa,baa,phlm
+Akaran Targe,2,35,26,pa6,pa6,ashd
+Akaran Rondache,2,40,30,pa7,pa7,ashd
+Protector Shield,2,46,34,pa8,pa8,ashd
+Guilded Shield,2,51,38,pa9,pa9,ashd
+Royal Shield,2,55,41,paa,paa,ashd
+Mummified Trophy,1,33,24,ne6,ne6,head
+Fetish Trophy,1,39,29,ne7,ne7,head
+Sexton Trophy,1,45,33,ne8,ne8,head
+Cantor Trophy,1,49,36,ne9,ne9,head
+Heirophant Trophy,1,54,40,nea,nea,head
+Blood Spirit,1,62,46,drb,drb,pelt
+Sun Spirit,1,69,51,drc,drc,pelt
+Earth Spirit,1,76,57,drd,drd,pelt
+Sky Spirit,1,83,62,dre,dre,pelt
+Dream Spirit,1,85,66,drf,drf,pelt
+Carnage Helm,2,60,45,bab,bab,phlm
+Fury Visor,2,66,49,bac,bac,phlm
+Destroyer Helm,2,73,54,bad,bad,phlm
+Conquerer Crown,2,80,60,bae,bae,phlm
+Guardian Crown,2,85,65,baf,baf,phlm
+Sacred Targe,2,63,47,pab,pab,ashd
+Sacred Rondache,2,70,52,pac,pac,ashd
+Ancient Shield P,2,74,55,pad,pad,ashd
+Zakarum Shield,2,82,61,pae,pae,ashd
+Vortex Shield,2,85,66,paf,paf,ashd
+Minion Skull,1,59,44,neb,neb,head
+Hellspawn Skull,1,67,50,neg,neg,head
+Overseer Skull,1,66,49,ned,ned,head
+Succubae Skull,1,81,60,nee,nee,head
+Bloodlord Skull,1,85,65,nef,nef,head

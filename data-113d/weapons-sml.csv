@@ -1,0 +1,308 @@
+name,type,code,namestr,rarity,level,levelreq
+Hand Axe,axe,hax,hax,3,3,0
+Axe,axe,axe,axe,4,7,0
+Double Axe,axe,2ax,2ax,4,13,0
+Military Pick,axe,mpi,mpi,4,19,0
+War Axe,axe,wax,wax,4,25,0
+Large Axe,axe,lax,lax,4,6,0
+Broad Axe,axe,bax,bax,4,12,0
+Battle Axe,axe,btx,btx,4,17,0
+Great Axe,axe,gax,gax,4,23,0
+Giant Axe,axe,gix,gix,4,27,0
+Wand,wand,wnd,wnd,1,2,0
+Yew Wand,wand,ywn,ywn,1,12,0
+Bone Wand,wand,bwn,bwn,1,18,0
+Grim Wand,wand,gwn,gwn,1,26,0
+Club,club,clb,clb,1,1,0
+Scepter,scep,scp,scp,2,3,0
+Grand Scepter,scep,gsc,gsc,4,15,0
+War Scepter,scep,wsp,wsp,4,21,0
+Spiked Club,club,spc,spc,3,4,0
+Mace,mace,mac,mac,4,8,0
+Morning Star,mace,mst,mst,4,13,0
+Flail,mace,fla,fla,4,19,0
+War Hammer,hamm,whm,whm,4,25,0
+Maul,hamm,mau,mau,4,21,0
+Great Maul,hamm,gma,gma,3,32,0
+Short Sword,swor,ssd,ssd,3,1,0
+Scimitar,swor,scm,scm,3,5,0
+Saber,swor,sbr,sbr,3,8,0
+Falchion,swor,flc,flc,4,11,0
+Crystal Sword,swor,crs,crs,2,11,0
+Broad Sword,swor,bsd,bsd,4,15,0
+Long Sword,swor,lsd,lsd,4,20,0
+War Sword,swor,wsd,wsd,4,27,0
+Two-Handed Sword,swor,2hs,2hs,4,10,0
+Claymore,swor,clm,clm,4,17,0
+Giant Sword,swor,gis,gis,4,21,0
+Bastard Sword,swor,bsw,bsw,4,24,0
+Flamberge,swor,flb,flb,4,27,0
+Great Sword,swor,gsd,gsd,4,33,0
+Dagger,knif,dgr,dgr,2,3,0
+Dirk,knif,dir,dir,2,9,0
+Kriss,knif,kri,kri,2,17,0
+Blade,knif,bld,bld,3,23,0
+Throwing Knife,tkni,tkf,tkf,2,2,0
+Throwing Axe,taxe,tax,tax,2,7,0
+Balanced Knife,tkni,bkf,bkf,2,13,0
+Balanced Axe,taxe,bal,bal,2,16,0
+Javelin,jave,jav,jav,4,1,0
+Pilum,jave,pil,pil,4,10,0
+Short Spear,jave,ssp,ssp,4,15,0
+Glaive,jave,glv,glv,4,23,0
+Throwing Spear,jave,tsp,tsp,4,29,0
+Spear,spea,spr,spr,4,5,0
+Trident,spea,tri,tri,4,9,0
+Brandistock,spea,brn,brn,4,16,0
+Spetum,spea,spt,spt,4,20,0
+Pike,spea,pik,pik,4,24,0
+Bardiche,pole,bar,bar,4,5,0
+Voulge,pole,vou,vou,4,11,0
+Scythe,pole,scy,scy,4,15,0
+Poleaxe,pole,pax,pax,4,21,0
+Halberd,pole,hal,hal,4,29,0
+War Scythe,pole,wsc,wsc,3,34,0
+Short Staff,staf,sst,sst,2,1,0
+Long Staff,staf,lst,lst,2,8,0
+Gnarled Staff,staf,cst,cst,2,12,0
+Battle Staff,staf,bst,bst,2,17,0
+War Staff,staf,wst,wst,2,24,0
+Short Bow,bow,sbw,sbw,2,1,0
+Hunter's Bow,bow,hbw,hbw,2,5,0
+Long Bow,bow,lbw,lbw,2,8,0
+Composite Bow,bow,cbw,cbw,2,12,0
+Short Battle Bow,bow,sbb,sbb,2,18,0
+Long Battle Bow,bow,lbb,lbb,2,23,0
+Short War Bow,bow,swb,swb,2,27,0
+Long War Bow,bow,lwb,lwb,2,31,0
+Light Crossbow,xbow,lxb,lxb,2,6,0
+Crossbow,xbow,mxb,mxb,2,15,0
+Heavy Crossbow,xbow,hxb,hxb,2,24,0
+Repeating Crossbow,xbow,rxb,rxb,2,33,0
+Rancid Gas Potion,tpot,gps,gps,,32,24
+Oil Potion,tpot,ops,ops,,28,20
+Choking Gas Potion,tpot,gpm,gpm,,20,16
+Exploding Potion,tpot,opm,opm,,16,12
+Strangling Gas Potion,tpot,gpl,gpl,,8,6
+Fulminating Potion,tpot,opl,opl,,4,0
+decoy dagger,knif,d33,d33,,0,0
+Gidbinn,knif,g33,g33,,0,0
+Wirt's Leg,club,leg,leg,,0,0
+Horadric Malus,hamm,hdm,hdm,,0,0
+Hellforge Hammer,hamm,hfh,hfh,,0,0
+Horadric Staff,staf,hst,hst,,0,0
+Staff of the Kings,staf,msf,msf,,0,0
+Hatchet,axe,9ha,9ha,3,31,19
+Cleaver,axe,9ax,9ax,4,34,22
+Twin Axe,axe,92a,92a,4,39,25
+Crowbill,axe,9mp,9mp,4,43,25
+Naga,axe,9wa,9wa,4,48,25
+Military Axe,axe,9la,9la,4,34,22
+Bearded Axe,axe,9ba,9ba,4,38,25
+Tabar,axe,9bt,9bt,4,42,25
+Gothic Axe,axe,9ga,9ga,4,46,25
+Ancient Axe,axe,9gi,9gi,4,51,25
+Burnt Wand,wand,9wn,9wn,1,31,19
+Petrified Wand,wand,9yw,9yw,1,38,25
+Tomb Wand,wand,9bw,9bw,1,43,25
+Grave Wand,wand,9gw,9gw,1,49,25
+Cudgel,club,9cl,9cl,1,30,18
+Rune Scepter,scep,9sc,9sc,2,31,19
+Holy Water Sprinkler,scep,9qs,9qs,4,40,25
+Divine Scepter,scep,9ws,9ws,4,45,25
+Barbed Club,club,9sp,9sp,3,32,20
+Flanged Mace,mace,9ma,9ma,4,35,23
+Jagged Star,mace,9mt,9mt,4,39,25
+Knout,mace,9fl,9fl,4,43,25
+Battle Hammer,hamm,9wh,9wh,4,48,25
+War Club,hamm,9m9,9m9,4,45,25
+Martel de Fer,hamm,9gm,9gm,3,53,25
+Gladius,swor,9ss,9ss,3,30,18
+Cutlass,swor,9sm,9sm,3,43,25
+Shamshir,swor,9sb,9sb,3,35,23
+Tulwar,swor,9fc,9fc,4,37,25
+Dimensional Blade,swor,9cr,9cr,2,37,25
+Battle Sword,swor,9bs,9bs,4,40,25
+Rune Sword,swor,9ls,9ls,4,44,25
+Ancient Sword,swor,9wd,9wd,4,49,25
+Espadon,swor,92h,92h,4,37,25
+Dacian Falx,swor,9cm,9cm,4,42,25
+Tusk Sword,swor,9gs,9gs,4,45,25
+Gothic Sword,swor,9b9,9b9,4,48,25
+Zweihander,swor,9fb,9fb,4,49,25
+Executioner Sword,swor,9gd,9gd,4,54,25
+Poignard,knif,9dg,9dg,2,31,19
+Rondel,knif,9di,9di,2,36,24
+Cinquedeas,knif,9kr,9kr,2,42,25
+Stilleto,knif,9bl,9bl,3,46,25
+Battle Dart,tkni,9tk,9tk,2,31,19
+Francisca,taxe,9ta,9ta,2,34,22
+War Dart,tkni,9bk,9bk,2,39,25
+Hurlbat,taxe,9b8,9b8,2,41,25
+War Javelin,jave,9ja,9ja,4,30,18
+Great Pilum,jave,9pi,9pi,4,37,25
+Simbilan,jave,9s9,9s9,4,40,25
+Spiculum,jave,9gl,9gl,4,46,25
+Harpoon,jave,9ts,9ts,4,51,25
+War Spear,spea,9sr,9sr,4,33,21
+Fuscina,spea,9tr,9tr,4,36,24
+War Fork,spea,9br,9br,4,41,25
+Yari,spea,9st,9st,4,44,25
+Lance,spea,9p9,9p9,4,47,25
+Lochaber Axe,pole,9b7,9b7,4,33,21
+Bill,pole,9vo,9vo,4,37,25
+Battle Scythe,pole,9s8,9s8,4,40,25
+Partizan,pole,9pa,9pa,4,35,23
+Bec-de-Corbin,pole,9h9,9h9,4,51,25
+Grim Scythe,pole,9wc,9wc,3,55,25
+Jo Staff,staf,8ss,8ss,2,30,18
+Quarterstaff,staf,8ls,8ls,2,35,23
+Cedar Staff,staf,8cs,8cs,2,38,25
+Gothic Staff,staf,8bs,8bs,2,42,25
+Rune Staff,staf,8ws,8ws,2,47,25
+Edge Bow,bow,8sb,8sb,2,30,18
+Razor Bow,bow,8hb,8hb,2,33,21
+Cedar Bow,bow,8lb,8lb,2,35,23
+Double Bow,bow,8cb,8cb,2,39,25
+Short Siege Bow,bow,8s8,8s8,2,43,25
+Long Siege Bow,bow,8l8,8l8,2,46,25
+Rune Bow,bow,8sw,8sw,2,49,25
+Gothic Bow,bow,8lw,8lw,2,52,25
+Arbalest,xbow,8lx,8lx,2,34,22
+Siege Crossbow,xbow,8mx,8mx,2,40,25
+Balista,xbow,8hx,8hx,2,47,25
+Chu-Ko-Nu,xbow,8rx,8rx,2,54,25
+KhalimFlail,mace,qf1,qf1,,0,0
+SuperKhalimFlail,mace,qf2,qf2,,0,0
+Expansion,,,,,,
+Katar,h2h,ktr,ktr,2,1,0
+Wrist Blade,h2h,wrb,wrb,2,9,0
+Hatchet Hands,h2h,axf,axf,2,12,0
+Cestus,h2h,ces,ces,2,15,0
+Claws,h2h,clw,clw,2,18,0
+Blade Talons,h2h,btl,btl,2,21,0
+Scissors Katar,h2h,skr,skr,2,24,0
+Quhab,h2h,9ar,9ar,2,28,21
+Wrist Spike,h2h,9wb,9wb,2,32,24
+Fascia,h2h,9xf,9xf,2,36,27
+Hand Scythe,h2h2,9cs,9cs,2,41,30
+Greater Claws,h2h2,9lw,9lw,2,45,33
+Greater Talons,h2h2,9tw,9tw,2,50,37
+Scissors Quhab,h2h2,9qr,9qr,2,54,40
+Suwayyah,h2h2,7ar,7ar,2,59,44
+Wrist Sword,h2h2,7wb,7wb,2,62,46
+War Fist,h2h2,7xf,7xf,2,68,51
+Battle Cestus,h2h2,7cs,7cs,2,73,54
+Feral Claws,h2h2,7lw,7lw,2,78,58
+Runic Talons,h2h2,7tw,7tw,2,81,60
+Scissors Suwayyah,h2h2,7qr,7qr,2,85,64
+Tomahawk,axe,7ha,7ha,3,54,40
+Small Crescent,axe,7ax,7ax,4,61,45
+Ettin Axe,axe,72a,72a,4,70,52
+War Spike,axe,7mp,7mp,4,79,59
+Berserker Axe,axe,7wa,7wa,4,85,64
+Feral Axe,axe,7la,7la,4,57,42
+Silver Edged Axe,axe,7ba,7ba,4,65,48
+Decapitator,axe,7bt,7bt,4,73,54
+Champion Axe,axe,7ga,7ga,4,82,61
+Glorious Axe,axe,7gi,7gi,4,85,66
+Polished Wand,wand,7wn,7wn,1,55,41
+Ghost Wand,wand,7yw,7yw,1,65,48
+Lich Wand,wand,7bw,7bw,1,75,56
+Unearthed Wand,wand,7gw,7gw,1,86,64
+Truncheon,club,7cl,7cl,1,52,39
+Mighty Scepter,scep,7sc,7sc,2,62,46
+Seraph Rod,scep,7qs,7qs,4,76,57
+Caduceus,scep,7ws,7ws,4,85,66
+Tyrant Club,club,7sp,7sp,3,57,42
+Reinforced Mace,mace,7ma,7ma,4,63,47
+Devil Star,mace,7mt,7mt,4,70,52
+Scourge,mace,7fl,7fl,4,76,57
+Legendary Mallet,hamm,7wh,7wh,4,82,61
+Ogre Maul,hamm,7m7,7m7,4,69,51
+Thunder Maul,hamm,7gm,7gm,3,85,65
+Falcata,swor,7ss,7ss,3,56,42
+Ataghan,swor,7sm,7sm,3,61,45
+Elegant Blade,swor,7sb,7sb,3,63,47
+Hydra Edge,swor,7fc,7fc,4,69,51
+Phase Blade,swor,7cr,7cr,2,73,54
+Conquest Sword,swor,7bs,7bs,4,78,58
+Cryptic Sword,swor,7ls,7ls,4,82,61
+Mythical Sword,swor,7wd,7wd,4,85,66
+Legend Sword,swor,72h,72h,4,59,44
+Highland Blade,swor,7cm,7cm,4,66,49
+Balrog Blade,swor,7gs,7gs,4,71,53
+Champion Sword,swor,7b7,7b7,4,77,57
+Colossal Sword,swor,7fb,7fb,4,80,60
+Colossus Blade,swor,7gd,7gd,4,85,63
+Bone Knife,knif,7dg,7dg,2,58,43
+Mithral Point,knif,7di,7di,2,70,52
+Fanged Knife,knif,7kr,7kr,2,83,62
+Legend Spike,knif,7bl,7bl,3,85,66
+Flying Knife,tkni,7tk,7tk,2,64,48
+Flying Axe,taxe,7ta,7ta,2,56,42
+Winged Knife,tkni,7bk,7bk,2,77,57
+Winged Axe,taxe,7b8,7b8,2,80,60
+Hyperion Javelin,jave,7ja,7ja,4,54,40
+Stygian Pilum,jave,7pi,7pi,4,62,46
+Balrog Spear,jave,7s7,7s7,4,71,53
+Ghost Glaive,jave,7gl,7gl,4,79,59
+Winged Harpoon,jave,7ts,7ts,4,85,65
+Hyperion Spear,spea,7sr,7sr,4,58,43
+Stygian Pike,spea,7tr,7tr,4,66,49
+Mancatcher,spea,7br,7br,4,74,55
+Ghost Spear,spea,7st,7st,4,83,62
+War Pike,spea,7p7,7p7,4,85,66
+Ogre Axe,pole,7o7,7o7,4,60,45
+Colossus Voulge,pole,7vo,7vo,4,64,48
+Thresher,pole,7s8,7s8,4,71,53
+Cryptic Axe,pole,7pa,7pa,4,79,59
+Great Poleaxe,pole,7h7,7h7,4,84,63
+Giant Thresher,pole,7wc,7wc,3,85,66
+Walking Stick,staf,6ss,6ss,2,58,43
+Stalagmite,staf,6ls,6ls,2,66,49
+Elder Staff,staf,6cs,6cs,2,74,55
+Shillelah,staf,6bs,6bs,2,83,62
+Archon Staff,staf,6ws,6ws,2,85,66
+Spider Bow,bow,6sb,6sb,2,55,41
+Blade Bow,bow,6hb,6hb,2,60,45
+Shadow Bow,bow,6lb,6lb,2,63,47
+Great Bow,bow,6cb,6cb,2,68,51
+Diamond Bow,bow,6s7,6s7,2,72,54
+Crusader Bow,bow,6l7,6l7,2,77,57
+Ward Bow,bow,6sw,6sw,2,80,60
+Hydra Bow,bow,6lw,6lw,2,85,63
+Pellet Bow,xbow,6lx,6lx,2,57,42
+Gorgon Crossbow,xbow,6mx,6mx,2,67,50
+Colossus Crossbow,xbow,6hx,6hx,2,75,56
+Demon Crossbow,xbow,6rx,6rx,2,84,63
+Eagle Orb,orb,ob1,ob1,2,1,0
+Sacred Globe,orb,ob2,ob2,3,8,0
+Smoked Sphere,orb,ob3,ob3,3,12,8
+Clasped Orb,orb,ob4,ob4,4,17,13
+Dragon Stone,orb,ob5,ob5,5,24,18
+Stag Bow,abow,am1,am1,3,18,14
+Reflex Bow,abow,am2,am2,3,27,20
+Maiden Spear,aspe,am3,am3,3,18,14
+Maiden Pike,aspe,am4,am4,3,27,20
+Maiden Javelin,ajav,am5,am5,3,23,17
+Glowing Orb,orb,ob6,ob6,2,32,24
+Crystalline Globe,orb,ob7,ob7,3,37,27
+Cloudy Sphere,orb,ob8,ob8,3,41,30
+Sparkling Ball,orb,ob9,ob9,4,46,34
+Swirling Crystal,orb,oba,oba,5,50,37
+Ashwood Bow,abow,am6,am6,3,39,29
+Ceremonial Bow,abow,am7,am7,3,47,35
+Ceremonial Spear,aspe,am8,am8,3,43,32
+Ceremonial Pike,aspe,am9,am9,3,51,38
+Ceremonial Javelin,ajav,ama,ama,3,35,26
+Heavenly Stone,orb,obb,obb,2,59,44
+Eldritch Orb,orb,obc,obc,3,67,50
+Demon Heart,orb,obd,obd,3,75,56
+Vortex Orb,orb,obe,obe,4,84,63
+Dimensional Shard,orb,obf,obf,5,85,66
+Matriarchal Bow,abow,amb,amb,3,53,39
+Grand Matron Bow,abow,amc,amc,3,78,58
+Matriarchal Spear,aspe,amd,amd,3,61,45
+Matriarchal Pike,aspe,ame,ame,3,81,60
+Matriarchal Javelin,ajav,amf,amf,3,65,48
