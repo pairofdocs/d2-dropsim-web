@@ -55,12 +55,20 @@
   
   <button id="run" style="margin: 1em 0 1em;"> Run </button> <br>
   <!-- organize divs into rows and columns. set display to table. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_images_side_by_side -->
-  <div id="monimg-and-loot" class="row" style="height: 440px; display: table;">  
-    <div class="column" style="float: left;"> <img id="monimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="padding: 0 1em 0 0; width: auto;"> </div>
-    <div id="loottxt" class="column" style="float: left;"> Loot: <br> </div>
+  <div id="monimg-and-loot" style="height: 440px; display: table;">  
+    <div style="float: left;"> <img id="monimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="padding: 0 1em 0 0; width: auto;"> </div>
+    <div id="loottxt-and-stash" style="float: left;"> 
+      <div class="row">
+        <div id="loottxt" style="float: left; height: 200px;"> Loot: <br> </div>
+      </div>
+      <div class="row">  <!-- loot scrollable textbox -->
+        <div id="stash" style="float: left; height: 200px; width: 257px; overflow: auto;"> Stash: <br> </div>
+      </div>
+    </div>
+    
   </div>
   <br>
-  <div class="row" style="display: table;">
+  <div style="display: table;">
     <p> Code available on <i class="fa fa-github"></i> <a href="https://github.com/pairofdocs/d2-dropsim-web/" style="color:#3392e6">github</a> </p>
   </div>
  
@@ -74,12 +82,16 @@
 </script>
 
 <script type="text/python">
-from browser import document
+from browser import document, html
 
 from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
 DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'}
 TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 7, "Cow": 1, "Countess": 1, "Council": 3}  # data from TreasureClassEx.txt
+
+def addToStash(e):  
+  # append loot item with style.color
+  document["stash"] <= html.DIV(e.target.html, style={'color':e.target.style.color})
 
 def change(e):
   # reset loot text area and prepare variables
@@ -98,7 +110,7 @@ def change(e):
       for loot_item in loot_items:
           if len(drops) < 6:
               drops.append(loot_item)
-  for drop in drops:
+  for i, drop in enumerate(drops):
     if "uni~" in drop:
       if "failed uni~" in drop:
         if 'potion' in drop.lower():
@@ -137,10 +149,14 @@ def change(e):
       # reset color
       color = "#e8f4ff"         # default light
     
-    document["loottxt"].html += '<div style="color:' + color + '">' + drop.split('~')[-1] + '</div>'
+    document["loottxt"].html += '<div id="drop' + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + '</div>'
+
+  for i, drop in enumerate(drops):
+    # bind to id drop+str(i)
+    document["drop"+str(i)].bind("click", addToStash)
 
 document["run"].bind("click", change)
-document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'"
+document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'.  Click an item to add it to the Stash"
 </script>
 
 </body>
