@@ -114,7 +114,6 @@ def runx(e):
     xtimes = max(int(document["xtimes"].value), 1)
   except:
     xtimes = 1
-  print(xtimes)
 
   for xt in range(xtimes):
     drops = []
@@ -129,7 +128,6 @@ def runx(e):
             if len(drops) < 6:
                 drops.append(loot_item)
     for i, drop in enumerate(drops):
-      print(len(drops))
       if "uni~" in drop:
         if "failed uni~" in drop:
           if 'potion' in drop.lower():
