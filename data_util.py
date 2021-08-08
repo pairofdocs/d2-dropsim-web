@@ -84,7 +84,7 @@ def final_rolls_from_tc(tc_name_str, players_str, seed_str):
         random.seed(seedint)
         seed_set = True
     
-    qboss = tc_name_str.split('(')[0].rstrip() in ['Andarielq', 'Durielq', 'Mephistoq', 'Diabloq', 'Baalq']
+    qboss = tc_name_str.split('(')[0].rstrip() in ['Andarielq', 'Durielq', 'Mephistoq', 'Diabloq', 'Baalq', 'Andariel', 'Duriel', 'Mephisto', 'Diablo', 'Baal']
     
     outcomes = []         # store itemTC and TC class.  Needed for keeping the uni/set/rare mf values
     rootpicknum = int(TCDICT[tc_name_str]['Picks'])
@@ -356,6 +356,7 @@ def check_if_qlvl_works(name_str, ilvl, qual_type='uni'):
     Doomspittle --> Doomslinger
     Kris --> Kriss
     Hunter’s Bow  --> replace single quote/ apostrophe
+    Chieftan --> Chieftain
 
     Bracers(M) -- Bracers in uniqueitems (chance guards code 'mgl')
     Mindrend --> Skull Splitter
