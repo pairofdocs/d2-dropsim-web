@@ -27,10 +27,15 @@
   <div> 
     <select id="selectMon" onchange="changeImg()" style="padding: 1px 2px;">
       <option value="Andarielq">Andarielq</option>
+      <option value="Andariel">Andariel</option>
       <option value="Durielq">Durielq</option>
+      <option value="Duriel">Duriel</option>
       <option value="Mephistoq">Mephistoq</option>
+      <option value="Mephisto">Mephisto</option>
       <option value="Diabloq">Diabloq</option>
+      <option value="Diablo">Diablo</option>
       <option value="Baalq">Baalq</option>
+      <option value="Baal">Baal</option>
       <option value="Cow">Cow</option>
       <option value="Countess">Countess</option>
       <option value="Council">Council</option>
@@ -53,13 +58,14 @@
     <input type="text" id="mftext" name="mftext" size="5" value="0" style="text-align: center;"> MF
   </div>
   
-  <button id="run" style="margin: 1em 0 1em;"> Run </button> <br>
+  <button id="run" style="margin: 1em 0 1em;"> Run x times </button> 
+  <input type="text" id="xtimes" name="xtimes" size="1" value="1" style="text-align: center;"> If x > 1 only uniques, sets and runes/essences/uber keys are kept as loot <br>
   <!-- organize divs into rows and columns. set display to table. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_images_side_by_side -->
   <div id="monimg-and-loot" style="height: 440px; display: table;">  
     <div style="float: left;"> <img id="monimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="padding: 0 1em 0 0; width: auto;"> </div>
     <div id="loottxt-and-stash" style="float: left;"> 
       <div class="row">
-        <div id="loottxt" style="float: left; height: 230px;"> Loot: <br> </div>
+        <div id="loottxt" style="float: left; height: 230px; margin: 0px 0px 0.68em; overflow: auto;"> Loot: <br> </div>
       </div>
       <div class="row">  <!-- loot scrollable textbox -->
         <div id="stash" style="float: left; height: 200px; width: 257px; overflow: auto;"> Stash: <br> </div>
@@ -73,7 +79,10 @@
   </div>
  
 <script>
-  var monStrImg = {"Andarielq":"./img/andy-d2r-resize.png", "Durielq":"./img/duri-d2r-resize2.png", "Mephistoq":"./img/meph-d2r-resize2.png", "Diabloq":"./img/diab-d2r-resize2.png", "Baalq":"./img/arreat-d2r-resize2.png", "Cow":"./img/cowlvl-d2r-resize2.png", "Countess":"./img/countess-d2r-resize2.png", "Council":"./img/council-d2r-resize2.png"};
+  var monStrImg = {
+    ...{"Andarielq":"./img/andy-d2r-resize.png", "Durielq":"./img/duri-d2r-resize2.png", "Mephistoq":"./img/meph-d2r-resize2.png", "Diabloq":"./img/diab-d2r-resize2.png", "Baalq":"./img/arreat-d2r-resize2.png", "Cow":"./img/cowlvl-d2r-resize2.png", "Countess":"./img/countess-d2r-resize2.png", "Council":"./img/council-d2r-resize2.png"},
+    ...{"Andariel":"./img/andy-d2r-resize.png", "Duriel":"./img/duri-d2r-resize2.png", "Mephisto":"./img/meph-d2r-resize2.png", "Diablo":"./img/diab-d2r-resize2.png", "Baal":"./img/arreat-d2r-resize2.png"}
+  }
 
   function changeImg() {
     document.getElementById("monimg").src = monStrImg[document.getElementById("selectMon").value];
@@ -88,75 +97,90 @@ from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
 DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'}
 TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 7, "Cow": 1, "Countess": 1, "Council": 3}  # data from TreasureClassEx.txt
+TCPicks.update({"Andariel": 7, "Duriel": 5, "Mephisto": 7, "Diablo": 7, "Baal": 7})
 
 def addToStash(e):  
   # append loot item with style.color
   document["stash"] <= html.DIV(e.target.html, style={'color':e.target.style.color})
   del document[e.target.id]
 
-def change(e):
+def runx(e):
   # reset loot text area and prepare variables
   document["loottxt"].html = "Loot: <br><br>"
-  drops = []
   monstr = document["selectMon"].value + DIFFICULTIES[document["selectDiff"].value]
   players_str = (document["selectPlayers"].value).split()[-1]
   mf_str = document["mftext"].value
+  try:
+    xtimes = max(int(document["xtimes"].value), 1)
+  except:
+    xtimes = 1
+  print(xtimes)
 
-  for i in range(TCPicks[document["selectMon"].value]):
-    if len(drops) == 6:
-      break
-    loot_items = final_rolls_from_tc(monstr, players_str, '')  # Hell difficulty hard-coded
-    loot_items = [name_from_armo_weap_misc(it['rolleditemtc'], mf_str, it['rootclass']) for it in loot_items]   # expanded item names
-    if loot_items:
-      for loot_item in loot_items:
-          if len(drops) < 6:
-              drops.append(loot_item)
-  for i, drop in enumerate(drops):
-    if "uni~" in drop:
-      if "failed uni~" in drop:
-        if 'potion' in drop.lower():
-          color = "#e8f4ff"         # default light
+  for xt in range(xtimes):
+    drops = []
+
+    for i in range(TCPicks[document["selectMon"].value]):
+      if len(drops) == 6:
+        break
+      loot_items = final_rolls_from_tc(monstr, players_str, '')  # Hell difficulty hard-coded
+      loot_items = [name_from_armo_weap_misc(it['rolleditemtc'], mf_str, it['rootclass']) for it in loot_items]   # expanded item names
+      if loot_items:
+        for loot_item in loot_items:
+            if len(drops) < 6:
+                drops.append(loot_item)
+    for i, drop in enumerate(drops):
+      print(len(drops))
+      if "uni~" in drop:
+        if "failed uni~" in drop:
+          if 'potion' in drop.lower():
+            color = "#e8f4ff"         # default light
+          else:
+            color = "#e8e83a"     # yellow  
+            if "charm" in drop.lower():
+              color = "#4f7cfb"     # blue
         else:
-          color = "#e8e83a"     # yellow  
+          color = "#b77f00"     # gold
+      elif "set~" in drop:
+        if "failed set~" in drop:
+          if 'potion' in drop.lower():
+            color = "#e8f4ff"     # default light
+          else:
+            color = "#4f7cfb"   # blue
+        else:
+          color = "#11c511"     # green
+      elif "rare~" in drop:
+        if 'potion' in drop.lower():
+          color = "#e8f4ff"   # default light
+        else:
+          color = "#e8e83a"   # yellow  
           if "charm" in drop.lower():
             color = "#4f7cfb"     # blue
-      else:
-        color = "#b77f00"     # gold
-    elif "set~" in drop:
-      if "failed set~" in drop:
+      elif "magic~" in drop:
         if 'potion' in drop.lower():
-          color = "#e8f4ff"     # default light
+          color = "#e8f4ff"   # default light
         else:
-          color = "#4f7cfb"   # blue
-      else:
-        color = "#11c511"     # green
-    elif "rare~" in drop:
-      if 'potion' in drop.lower():
-        color = "#e8f4ff"   # default light
-      else:
-        color = "#e8e83a"   # yellow  
-        if "charm" in drop.lower():
           color = "#4f7cfb"     # blue
-    elif "magic~" in drop:
-      if 'potion' in drop.lower():
+      elif "normal~" in drop:
         color = "#e8f4ff"   # default light
+      elif ("essence of" in drop.lower() or " rune" in drop.lower() or "key of" in drop.lower() or "puzzlebox" in drop.lower()):
+        color = "#dc7409"     # orange
       else:
-        color = "#4f7cfb"     # blue
-    elif "normal~" in drop:
-      color = "#e8f4ff"   # default light
-    elif ("essence of" in drop.lower() or " rune" in drop.lower() or "key of" in drop.lower() or "puzzlebox" in drop.lower()):
-      color = "#dc7409"     # orange
-    else:
-      # reset color
-      color = "#e8f4ff"         # default light
-    
-    document["loottxt"].html += '<div id="drop' + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + '</div>'
+        # reset color
+        color = "#e8f4ff"         # default light
+      
+      # if xtimes > 1, add unique, set, and rune color
+      if xtimes > 1:
+        # add drop if color is uni,set,orange
+        if color in ["#b77f00", "#11c511", "#dc7409"]:
+          document["loottxt"].html += '<div id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + '</div>'  
+      else:
+        document["loottxt"].html += '<div id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + '</div>'
 
-  for i, drop in enumerate(drops):
+  for child in document["loottxt"]:
     # bind to id drop+str(i)
-    document["drop"+str(i)].bind("click", addToStash)
+    child.bind("click", addToStash)
 
-document["run"].bind("click", change)
+document["run"].bind("click", runx)
 document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'.  Click an item to add it to the Stash"
 </script>
 
