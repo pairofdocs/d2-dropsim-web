@@ -92,6 +92,7 @@ TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 
 def addToStash(e):  
   # append loot item with style.color
   document["stash"] <= html.DIV(e.target.html, style={'color':e.target.style.color})
+  del document[e.target.id]
 
 def change(e):
   # reset loot text area and prepare variables
