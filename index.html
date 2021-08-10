@@ -56,7 +56,7 @@
       <option value="players 8">players 8</option>
     </select>
     <input type="text" id="mftext" name="mftext" size="5" value="0" style="text-align: center;"> MF
-    <input type="text" id="seedtext" name="seedtext" size="1" value="" style="text-align: center; margin: 0 0 0 10em ;"> RNG seed
+    <input type="text" id="seedtext" name="seedtext" size="2" value="" style="text-align: center; margin: 0 0 0 10em ;"> RNG seed
   </div>
   
   <button id="run" style="margin: 1em 0 1em;"> Run x times </button> 
@@ -101,7 +101,7 @@ TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 
 TCPicks.update({"Andariel": 7, "Duriel": 5, "Mephisto": 7, "Diablo": 7, "Baal": 7})
 
 def addToStash(e):  
-  # append loot item with style.color. id ~ 'stash5-0'
+  # append loot item with style.color. id ~ 'drop5-0'
   stashdiv = html.DIV(e.target.html, style={'color':e.target.style.color, 'cursor':'pointer'})
   document["stash"] <= stashdiv
   del document[e.target.id]
