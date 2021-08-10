@@ -56,6 +56,7 @@
       <option value="players 8">players 8</option>
     </select>
     <input type="text" id="mftext" name="mftext" size="5" value="0" style="text-align: center;"> MF
+    <input type="text" id="seedtext" name="seedtext" size="1" value="" style="text-align: center; margin: 0 0 0 10em ;"> RNG seed
   </div>
   
   <button id="run" style="margin: 1em 0 1em;"> Run x times </button> 
@@ -110,6 +111,7 @@ def runx(e):
   monstr = document["selectMon"].value + DIFFICULTIES[document["selectDiff"].value]
   players_str = (document["selectPlayers"].value).split()[-1]
   mf_str = document["mftext"].value
+  seed_str = document["seedtext"].value
   try:
     xtimes = max(int(document["xtimes"].value), 1)
   except:
@@ -121,7 +123,7 @@ def runx(e):
     for i in range(TCPicks[document["selectMon"].value]):
       if len(drops) == 6:
         break
-      loot_items = final_rolls_from_tc(monstr, players_str, '')  # Hell difficulty hard-coded
+      loot_items = final_rolls_from_tc(monstr, players_str, seed_str)  # Hell difficulty hard-coded
       loot_items = [name_from_armo_weap_misc(it['rolleditemtc'], mf_str, it['rootclass']) for it in loot_items]   # expanded item names
       if loot_items:
         for loot_item in loot_items:
