@@ -85,7 +85,7 @@ Twitchthroe,1,22,16,stu,Studded Leather
 Darkglow,1,19,14,rng,Ring Mail
 Hawkmail,1,20,15,scl,Scale Mail
 Sparking Mail,1,23,17,chn,Chain Mail
-Venomsward,1,27,20,brs,Breast Plate
+Venom Ward,1,27,20,brs,Breast Plate
 Iceblink,1,30,22,spl,Splint Mail
 Boneflesh,1,35,26,plt,Plate Mail
 Rockfleece,1,38,28,fld,Field Plate
@@ -111,7 +111,7 @@ Gorefoot,1,12,9,vbt,Heavy Boots
 Treads of Cthon,1,20,15,mbt,Chain Boots
 Goblin Toe,1,30,22,tbt,Light Plate Boots
 Tearhaunch,1,39,29,hbt,Plate Boots
-Lenyms Cord,1,10,7,lbl,Sash
+Lenymo,1,10,7,lbl,Sash
 Snakecord,1,16,12,vbl,Light Belt
 Nightsmoke,1,27,20,mbl,Belt
 Goldwrap,1,36,27,tbl,Heavy Belt
