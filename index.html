@@ -46,46 +46,54 @@
   <h1> D2 and D2R Bossq and Monster Drop Simulator </h1>
   <p id="par-1"> Loading data takes a couple of seconds... </p>
   
-  <!-- TODO: Table for line 1 configs and line 2 button and text -->
-  <!-- selections -->
-  <div> 
-    <select id="selectMon" onchange="changeImg()" style="padding: 1px 2px;">
-      <option value="Andarielq">Andarielq</option>
-      <option value="Andariel">Andariel</option>
-      <option value="Durielq">Durielq</option>
-      <option value="Duriel">Duriel</option>
-      <option value="Mephistoq">Mephistoq</option>
-      <option value="Mephisto">Mephisto</option>
-      <option value="Diabloq">Diabloq</option>
-      <option value="Diablo">Diablo</option>
-      <option value="Baalq">Baalq</option>
-      <option value="Baal">Baal</option>
-      <option value="Cow">Cow</option>
-      <option value="Countess">Countess</option>
-      <option value="Council">Council</option>
-    </select>
-    <select id="selectDiff" style="padding: 1px 2px;">
-      <option value="Normal">Normal</option>
-      <option value="Nightmare">Nightmare</option>
-      <option value="Hell">Hell</option>
-    </select>
-    <select id="selectPlayers" style="padding: 1px 2px;">
-      <option value="players 1">players 1</option>
-      <option value="players 2">players 2</option>
-      <option value="players 3">players 3</option>
-      <option value="players 4">players 4</option>
-      <option value="players 5">players 5</option>
-      <option value="players 6">players 6</option>
-      <option value="players 7">players 7</option>
-      <option value="players 8">players 8</option>
-    </select>
-    <input type="text" id="mftext" name="mftext" size="5" value="0" style="text-align: center;"> MF
-    <input type="text" id="seedtext" name="seedtext" size="2" value="" style="text-align: center; margin: 0 0 0 10em ;"> RNG seed
-    <span id="grailUniques" style="padding: 0 0 0 4.25em; color: #b77f00;"> Uniques Found: 0/379</span>
-  </div>
+  <table> <!-- selections/controls and grail track cols -->
+    <tr>
+      <td>
+        <div> 
+          <select id="selectMon" onchange="changeImg()" style="padding: 1px 2px;">
+            <option value="Andarielq">Andarielq</option>
+            <option value="Andariel">Andariel</option>
+            <option value="Durielq">Durielq</option>
+            <option value="Duriel">Duriel</option>
+            <option value="Mephistoq">Mephistoq</option>
+            <option value="Mephisto">Mephisto</option>
+            <option value="Diabloq">Diabloq</option>
+            <option value="Diablo">Diablo</option>
+            <option value="Baalq">Baalq</option>
+            <option value="Baal">Baal</option>
+            <option value="Cow">Cow</option>
+            <option value="Countess">Countess</option>
+            <option value="Council">Council</option>
+          </select>
+          <select id="selectDiff" style="padding: 1px 2px;">
+            <option value="Normal">Normal</option>
+            <option value="Nightmare">Nightmare</option>
+            <option value="Hell">Hell</option>
+          </select>
+          <select id="selectPlayers" style="padding: 1px 2px;">
+            <option value="players 1">players 1</option>
+            <option value="players 2">players 2</option>
+            <option value="players 3">players 3</option>
+            <option value="players 4">players 4</option>
+            <option value="players 5">players 5</option>
+            <option value="players 6">players 6</option>
+            <option value="players 7">players 7</option>
+            <option value="players 8">players 8</option>
+          </select>
+          <input type="text" id="mftext" name="mftext" size="5" value="0" style="text-align: center;"> MF
+          <input type="text" id="seedtext" name="seedtext" size="2" value="" style="text-align: center; margin: 0 0 0 10em ;"> RNG seed
+        </div>
+        
+        <button id="run" style="margin: 1em 0 1em;"> Run x times </button> 
+        <input type="text" id="xtimes" name="xtimes" size="1" value="1" style="text-align: center;"> If x > 1 only uniques, sets and runes/essences/uber keys are kept as loot
+      </td>
+      <td style="padding: 0 0 0 4em;">
+        <div id="grailUniques" style="color: #b77f00; text-align: center;"> Uniques Found: 0/379</div>
+        <div id="grailSets" style="color: #11c511; text-align: center;"> Sets Found: 0/127 </div>
+      </td>
+    </tr>
+  </table>
   
-  <button id="run" style="margin: 1em 0 1em;"> Run x times </button> 
-  <input type="text" id="xtimes" name="xtimes" size="1" value="1" style="text-align: center;"> If x > 1 only uniques, sets and runes/essences/uber keys are kept as loot <span id="grailSets" style="padding: 0 0 0 3.5em; color: #11c511;"> Sets Found: 0/127 </span><br>
   <!-- organize divs into rows and columns. set display to table. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_images_side_by_side -->
   <div id="monimg-and-loot" style="height: 440px; display: table;">  
     <div style="float: left;"> <img id="monimg" src="./img/andy-d2r-resize.png" alt="Drop simulator boss or monster environment" style="padding: 0 1em 0 0; width: auto;"> </div>
