@@ -38,7 +38,9 @@
     }
   </style>
   <script type="text/javascript" src="./brython.js"></script>
-  <script type="text/javascript" src="./brython_modules.js"></script>
+  <script type="text/javascript" src="./brython_stdlib.js"></script>
+  <!-- <script type="text/javascript" src="./brython_modules.js"></script> -->
+  <!-- NOTE: could not use collections counter with only brython_modules.js -->
   <!-- https://brython.info/static_doc/en/import.html   use optimized imports with brython_modules.js-->
 </head>
 
@@ -112,7 +114,7 @@
     <p> Code available on <i class="fa fa-github"></i> <a href="https://github.com/pairofdocs/d2-dropsim-web/" style="color:#3392e6">github</a> </p>
   </div>
  
-<script>
+<script type="text/javascript">
   var monStrImg = {
     ...{"Andarielq":"./img/andy-d2r-resize.png", "Durielq":"./img/duri-d2r-resize2.png", "Mephistoq":"./img/meph-d2r-resize2.png", "Diabloq":"./img/diab-d2r-resize2.png", "Baalq":"./img/arreat-d2r-resize2.png", "Cow":"./img/cowlvl-d2r-resize2.png", "Countess":"./img/countess-d2r-resize2.png", "Council":"./img/council-d2r-resize2.png"},
     ...{"Andariel":"./img/andy-d2r-resize.png", "Duriel":"./img/duri-d2r-resize2.png", "Mephisto":"./img/meph-d2r-resize2.png", "Diablo":"./img/diab-d2r-resize2.png", "Baal":"./img/arreat-d2r-resize2.png"}
@@ -123,10 +125,9 @@
     document.getElementById("loottxt").innerHTML = "Loot: <br><br>";
   }
 </script>
-
 <script type="text/python">
 from browser import document, html, confirm
-
+from collections import Counter
 from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
 DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'}
@@ -156,6 +157,7 @@ def runx(e):
   players_str = (document["selectPlayers"].value).split()[-1]
   mf_str = document["mftext"].value
   seed_str = document["seedtext"].value
+  tot_loot = []
   try:
     xtimes = max(int(document["xtimes"].value), 1)
   except:
@@ -222,9 +224,19 @@ def runx(e):
       if xtimes > 1:
         # add drop if color is uni,set,orange
         if color in ["#b77f00", "#11c511", "#dc7409"]:
-          document["loottxt"].html += '<div class="tooltip" id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
+          div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~')[-1] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
+          # document["loottxt"].html += div_str  # div_str  has id  ~  id="drop-Tal Rune".  not like 'drop0-0' below
+          # add to total loot, then take Counter() below
+          tot_loot.append(div_str)
       else:
-        document["loottxt"].html += '<div class="tooltip" id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
+        div_str = '<div class="tooltip" id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
+        document["loottxt"].html += div_str
+
+  if xtimes > 1:
+    count = sorted(Counter(tot_loot).items(), key=lambda x: x[0].split('">')[1].split('<span')[0])   # sorted divs by drop name -v' categories uni+set (have extra space at the start of string), then runes/keys
+    for k,v in count:
+      name = k.split('">')[1].split('<span')[0]  # get loot name between html tags
+      document["loottxt"].html += k.replace('>' + name, '>' + name + ' - ' + str(v), 1)  # replace 1st occurrence and add to html
 
   for child in document["loottxt"]:
     # bind to id drop+str(i)
