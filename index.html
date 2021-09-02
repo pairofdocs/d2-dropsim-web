@@ -38,8 +38,7 @@
     }
   </style>
   <script type="text/javascript" src="./brython.js"></script>
-  <script type="text/javascript" src="./brython_stdlib.js"></script>
-  <!-- <script type="text/javascript" src="./brython_modules.js"></script> -->
+  <script type="text/javascript" src="./brython_modules.js"></script>
   <!-- NOTE: could not use collections counter with only brython_modules.js -->
   <!-- https://brython.info/static_doc/en/import.html   use optimized imports with brython_modules.js-->
 </head>
@@ -125,9 +124,9 @@
     document.getElementById("loottxt").innerHTML = "Loot: <br><br>";
   }
 </script>
+
 <script type="text/python">
 from browser import document, html, confirm
-from collections import Counter
 from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
 DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'}
@@ -157,7 +156,7 @@ def runx(e):
   players_str = (document["selectPlayers"].value).split()[-1]
   mf_str = document["mftext"].value
   seed_str = document["seedtext"].value
-  tot_loot = []
+  tot_loot = {}  # alternative is to use a list. then take list.count(item).  both cases are ~k*o(n) complexity. the number of items is limited since only unis, sets, runes are kept
   try:
     xtimes = max(int(document["xtimes"].value), 1)
   except:
@@ -226,14 +225,17 @@ def runx(e):
         if color in ["#b77f00", "#11c511", "#dc7409"]:
           div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~')[-1] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
           # document["loottxt"].html += div_str  # div_str  has id  ~  id="drop-Tal Rune".  not like 'drop0-0' below
-          # add to total loot, then take Counter() below
-          tot_loot.append(div_str)
+          # add to total loot dict.  alternative is to use a list and list.append().  comp. cost is then shifted to list.count(item) afterwards
+          if div_str not in tot_loot:
+            tot_loot[div_str] = 1
+          else:
+            tot_loot[div_str] += 1
       else:
         div_str = '<div class="tooltip" id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
         document["loottxt"].html += div_str
 
   if xtimes > 1:
-    count = sorted(Counter(tot_loot).items(), key=lambda x: x[0].split('">')[1].split('<span')[0])   # sorted divs by drop name -v' categories uni+set (have extra space at the start of string), then runes/keys
+    count = sorted(tot_loot.items(), key=lambda x: x[0].split('">')[1].split('<span')[0])   # sorted divs by drop name -v' categories uni+set (have extra space at the start of string), then runes/keys
     for k,v in count:
       name = k.split('">')[1].split('<span')[0]  # get loot name between html tags
       document["loottxt"].html += k.replace('>' + name, '>' + name + ' - ' + str(v), 1)  # replace 1st occurrence and add to html
