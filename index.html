@@ -221,15 +221,21 @@ def runx(e):
       linkstr = "https://duckduckgo.com/?q=diablo2.io+" + "+".join(drop.split('~')[-1].split())
       tooltip = '<span class="tooltiptext"> <a href="' + linkstr + '" target="_blank" style="color:#3392e6"> Search Item </a> </span>'
       if xtimes > 1:
-        # add drop if color is uni,set,orange
-        if color in ["#b77f00", "#11c511", "#dc7409"]:
-          div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~')[-1] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
-          # document["loottxt"].html += div_str  # div_str  has id  ~  id="drop-Tal Rune".  not like 'drop0-0' below
-          # add to total loot dict.  alternative is to use a list and list.append().  comp. cost is then shifted to list.count(item) afterwards
+        div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~')[-1] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
+        if document["selectMon"].value == 'Cow' and not ('Gold' in drop or 'Potion' in drop or 'Arrows' in drop or 'Bolts' in drop or 'Scroll' in drop or 'Key' in drop):
           if div_str not in tot_loot:
             tot_loot[div_str] = 1
           else:
             tot_loot[div_str] += 1
+        else:
+          # add drop if color is uni,set,orange
+          if color in ["#b77f00", "#11c511", "#dc7409"]:
+            # document["loottxt"].html += div_str  # div_str  has id  ~  id="drop-Tal Rune".  not like 'drop0-0' below
+            # add to total loot dict.  alternative is to use a list and list.append().  comp. cost is then shifted to list.count(item) afterwards
+            if div_str not in tot_loot:
+              tot_loot[div_str] = 1
+            else:
+              tot_loot[div_str] += 1
       else:
         div_str = '<div class="tooltip" id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
         document["loottxt"].html += div_str
