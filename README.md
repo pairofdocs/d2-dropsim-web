@@ -9,7 +9,6 @@ The drop simulator uses item type and quality generating functions and data file
 
 
 ### Todo
-- Add Baal image
 - Enable/disable check for same unique per run
 - Ethereal status
 
