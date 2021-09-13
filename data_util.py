@@ -19,7 +19,8 @@ MISC_THROW_POTS = {
     "opl": {"name": "Fulminating Potion", "level": "4"},
 }
 MONSTATSDICT_EXTRA = {
-    "countess": {"Level": "11", "Level(N)": "45", "Level(H)": "82"}
+    "countess": {"Level": "11", "Level(N)": "45", "Level(H)": "82"},
+    "cow king": {"Level": "31", "Level(N)": "67", "Level(H)": "84"}
 }
 seed_set = False
 
@@ -167,6 +168,9 @@ def roll_from_armo_weap_lvl(item_str):
     # probability -> itemtypes.txt rarity.  3 for axe.  1 for staves, ...   use ITEMTYPESDICT
     for k,v in itemdict.items():
         if v['level'] and (lvl-3 < int(v['level']) <= lvl):
+            if item_str[0:4] == 'mele':  # account for 'mele' tc (cow king)
+                if v['type'] in ['bow', 'xbow', 'jave', 'tkni', 'taxe', 'tpot', 'abow', 'ajav']:
+                    continue
             items.append(v['name'])
             # account for rarity = '' in data.  weapons.txt rarity is for chests.  look at itemtypes.txt
             try:
@@ -204,6 +208,8 @@ def get_mlvl(mon_str):
     mon_name = mon_str.split(' (')[0].lower()
     if mon_name[0:4] == 'baal':
         mon_name = 'baalcrab'
+    elif mon_name[0:8] == 'cow king':
+        mon_name = 'cow king'
     elif mon_name[0:3] == 'cow':    # account for 'Cow King' if he's added to the tclist
         mon_name = 'hellbovine'
     elif mon_name[0:7] == 'council':
@@ -211,8 +217,8 @@ def get_mlvl(mon_str):
 
     mon_diffi = ('(' + mon_str.split(' (')[1]) if '(' in mon_str else ''  # '', '(N)', '(H)'
     mon_name = mon_name[0:-1] if mon_name.endswith('q') else mon_name
-    if mon_name.lower().startswith('countess'):  # account for monsters not in monstats.txt
-        mlvl = int(MONSTATSDICT_EXTRA['countess']['Level'+mon_diffi])
+    if mon_name.lower() in ['countess', 'cow king']:  # account for monsters not in monstats.txt
+        mlvl = int(MONSTATSDICT_EXTRA[mon_name.lower()]['Level'+mon_diffi])
     else:
         mlvl = int(MONSTATSDICT[mon_name]['Level'+mon_diffi])
 
@@ -225,7 +231,7 @@ def name_from_armo_weap_misc(item_str, mf_str, mon_str):
     """
     type_str = item_str[0:4]
     mlvl = get_mlvl(mon_str)
-    if type_str in ['armo', 'weap']:
+    if type_str in ['armo', 'weap', 'mele']:
         out_name, level, itemtype = roll_from_armo_weap_lvl(item_str)
         # check for quality. unique, set, rare, magic.   out_name 'uni~ Balanced Knife'
         out_name, success = check_uni_or_set(out_name, level, is_class_specific(itemtype), mlvl, mon_str, mf_str, 'uni')
@@ -335,18 +341,18 @@ def check_uni_or_set(name_str, level_str, is_class_spec, mlvl_int, mon_str, mf_s
         roll_success = True
         # either unique or failed unique. (and set/ failed set)  for quest drops.   non quest monsters can have uni, set, rare, magic, normal
         ### TODO: charms either gheeds or magic(blue)
-        out_str = check_if_qlvl_works(name_str, mlvl_int, qual_type)
+        out_str = check_if_qlvl_works(name_str, mlvl_int, mon_str, qual_type)
     else:
         out_str = name_str
     
     return out_str, roll_success
 
 
-def check_if_qlvl_works(name_str, ilvl, qual_type='uni'):
+def check_if_qlvl_works(name_str, ilvl, mon_str, qual_type='uni'):
     """
     check for unique/set item's qlvl <= the monster lvl (ilvl)
     pick unique with probability according to it's rarity
-    check_if_qlvl_works('spiderweb sash', 75)  -->  'failed uni/set'
+    check_if_qlvl_works('spiderweb sash', 75, mon_str)  -->  'failed uni/set'
     NOTE: crystal sword 'Azurewrath' can be output. this function doesn't check the 'enabled' col
     NOTE: typo fixed in UniqueItems.txt :      Razorswitch  --> Jo Stalf  -- Jo Staff
     typo: Gaunlets(H) -->  Gauntlets(H)
@@ -387,7 +393,11 @@ def check_if_qlvl_works(name_str, ilvl, qual_type='uni'):
             if row[namecol].lower().replace(' ','').replace("'","").replace("’","") == name_str.lower().split('(')[0].replace(' ', '').replace("'","").replace("’",""):
                 # print(row[namecol], row['lvl'])
                 if row['lvl'] and int(row['lvl']) > 0 and int(row['lvl']) <= ilvl:
-                    if not 'cow king' in row['index'].lower():
+                    if 'cow king' in row['index'].lower():  # add check for mon_name 'cow king'
+                        if mon_str.lower().replace(' (n)','').replace(' (h)','') in ['cow', 'cow king']:
+                            possible_items.append(row['index'])
+                            probs.append(int(row['rarity']))
+                    else:
                         possible_items.append(row['index'])
                         probs.append(int(row['rarity']))
     if possible_items:
