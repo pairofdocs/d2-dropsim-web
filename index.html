@@ -116,6 +116,7 @@
   <div style="display: table;">
     <p> Code available on <i class="fa fa-github"></i> <a href="https://github.com/pairofdocs/d2-dropsim-web/" style="color:#3392e6">github</a> </p>
   </div>
+  <input type="checkbox" id="d2iosearch" name="d2iosearch"> <label for="d2iosearch">Search with diablo2.io only</label>
  
 <script type="text/javascript">
   var monStrImg = {
@@ -165,6 +166,7 @@ def runx(e):
     xtimes = max(int(document["xtimes"].value), 1)
   except:
     xtimes = 1
+  d2iosearch_bool = document["d2iosearch"].checked
 
   for xt in range(xtimes):
     drops = []
@@ -222,7 +224,10 @@ def runx(e):
         color = "#e8f4ff"         # default light
       
       # if xtimes > 1, add unique, set, and rune color
-      linkstr = "https://duckduckgo.com/?q=diablo2.io+" + "+".join(drop.split('~')[-1].split())
+      if d2iosearch_bool:
+        linkstr = "https://duckduckgo.com/?q=site:diablo2.io+" + "+".join(drop.split('~')[-1].split())
+      else:
+        linkstr = "https://duckduckgo.com/?q=diablo2.io+" + "+".join(drop.split('~')[-1].split())
       tooltip = '<span class="tooltiptext"> <a href="' + linkstr + '" target="_blank" style="color:#3392e6"> Search Item </a> </span>'
       if xtimes > 1:
         if document["selectMon"].value == 'Cow' and not ('Gold' in drop or 'Potion' in drop or 'Arrows' in drop or 'Bolts' in drop or 'Scroll' in drop or 'Skeleton Key' in drop):
