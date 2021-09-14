@@ -63,9 +63,12 @@
             <option value="Baalq">Baalq</option>
             <option value="Baal">Baal</option>
             <option value="Cow">Cow</option>
+            <option value="Cow King">Cow King</option>
             <option value="Countess">Countess</option>
             <option value="Council">Council</option>
-            <option value="Cow King">Cow King</option>
+            <option value="Nihlathak">Nihlathak</option>
+            <option value="Eldritch">Eldritch</option>
+            <option value="Pindleskin">Pindleskin</option>
           </select>
           <select id="selectDiff" style="padding: 1px 2px;">
             <option value="Normal">Normal</option>
@@ -117,7 +120,7 @@
 <script type="text/javascript">
   var monStrImg = {
     ...{"Andarielq":"./img/andy-d2r-resize.png", "Durielq":"./img/duri-d2r-resize2.png", "Mephistoq":"./img/meph-d2r-resize2.png", "Diabloq":"./img/diab-d2r-resize2.png", "Baalq":"./img/baal-d2r-resize2.png", "Cow":"./img/cowlvl-d2r-resize2.png", "Countess":"./img/countess-d2r-resize2.png", "Council":"./img/council-d2r-resize2.png"},
-    ...{"Andariel":"./img/andy-d2r-resize.png", "Duriel":"./img/duri-d2r-resize2.png", "Mephisto":"./img/meph-d2r-resize2.png", "Diablo":"./img/diab-d2r-resize2.png", "Baal":"./img/baal-d2r-resize2.png", "Cow King":"./img/cowlvl-d2r-resize2.png"}
+    ...{"Andariel":"./img/andy-d2r-resize.png", "Duriel":"./img/duri-d2r-resize2.png", "Mephisto":"./img/meph-d2r-resize2.png", "Diablo":"./img/diab-d2r-resize2.png", "Baal":"./img/baal-d2r-resize2.png", "Cow King":"./img/cowlvl-d2r-resize2.png", "Nihlathak":"./img/nihla-d2lod-resize2.png", "Eldritch":"./img/eldritch-d2lod-resize2.png", "Pindleskin":"./img/pindle-d2lod-resize2.png"}
   }
 
   function changeImg() {
@@ -132,7 +135,7 @@ from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
 DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'}
 TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 7, "Cow": 1, "Countess": 1, "Council": 3}  # data from TreasureClassEx.txt
-TCPicks.update({"Andariel": 7, "Duriel": 5, "Mephisto": 7, "Diablo": 7, "Baal": 7, "Cow King": 5})
+TCPicks.update({"Andariel": 7, "Duriel": 5, "Mephisto": 7, "Diablo": 7, "Baal": 7, "Cow King": 5, "Nihlathak": 5, "Eldritch": 1, "Pindleskin": 1})  # 1 --> -4 for superuniques
 unis = set()   # 379 uniques total.  a uni jewel is counted once. Hellfire torch is not counted
 sets = set()   # 127 set items total
 
