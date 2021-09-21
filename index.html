@@ -37,13 +37,15 @@
       max-width:none;
     }
   </style>
-  <script type="text/javascript" src="./brython.js"></script>
-  <script type="text/javascript" src="./brython_modules.js"></script>
+  <!-- <script type="text/javascript" src="./brython.js"></script> -->
+  <!-- <script type="text/javascript" src="./brython_modules.js"></script> -->
   <!-- NOTE: could not use collections counter with only brython_modules.js -->
   <!-- https://brython.info/static_doc/en/import.html   use optimized imports with brython_modules.js-->
+  <script type="text/javascript" src="./data_util.js"></script>
 </head>
 
-<body onload="brython(1)">
+<!-- <body onload="brython(1)"> -->
+<body>
   <h1> D2 and D2R Bossq and Monster Drop Simulator </h1>
   <p id="par-1"> Loading data takes a couple of seconds... </p>
   
@@ -86,7 +88,8 @@
             <option value="players 8">players 8</option>
           </select>
           <input type="text" id="mftext" name="mftext" size="5" value="0" style="text-align: center;"> Magic Find
-          <input type="text" id="seedtext" name="seedtext" size="2" value="" style="text-align: center; margin: 0 0 0 10em ;"> RNG seed
+          <input type="text" id="seedtext" name="seedtext" size="2" value="" style="text-align: center; margin: 0 0 0 10em ; visibility: hidden;"> 
+          <!-- RNG Seed.  hidden since JS doesnt have a random.seed set function like py -->
         </div>
         
         <button id="run" style="margin: 1em 0 1em;"> Run x times </button> 
@@ -130,138 +133,176 @@
   }
 </script>
 
-<script type="text/python">
-from browser import document, html, confirm
-from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
-DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'}
-TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 7, "Cow": 1, "Countess": 1, "Council": 3}  # data from TreasureClassEx.txt
-TCPicks.update({"Andariel": 7, "Duriel": 5, "Mephisto": 7, "Diablo": 7, "Baal": 7, "Cow King": 5, "Nihlathak": 5, "Eldritch": 1, "Pindleskin": 1})  # 1 --> -4 for superuniques
-unis = set()   # 379 uniques total.  a uni jewel is counted once. Hellfire torch is not counted
-sets = set()   # 127 set items total
+<script type="text/javascript">
+// from browser import document, html, confirm
+// from data_util import final_rolls_from_tc, name_from_armo_weap_misc
 
-def addToStash(e):  
-  if "target" not in e.target.attrs:
-    # append loot item with style.color. id ~ 'drop5-0'
-    stashdiv = html.DIV(e.target.html, style={'color':e.target.style.color, 'cursor':'pointer'}, Class="tooltip")
-    document["stash"] <= stashdiv
-    del document[e.target.id]
-    # add confirmation window to stash item on click
-    stashdiv.bind("click", removeFromStash)
+var DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'};
+var TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 7, "Cow": 1, "Countess": 1, "Council": 3};  // data from TreasureClassEx.txt
+var TCPicks2 = {"Andariel": 7, "Duriel": 5, "Mephisto": 7, "Diablo": 7, "Baal": 7, "Cow King": 5, "Nihlathak": 5, "Eldritch": 1, "Pindleskin": 1};  // 1 --> -4 for superuniques
+var TCPicks = {...TCPicks, ...TCPicks2 };
+var unis = new Set();  // 379 uniques total.  a uni jewel is counted once. Hellfire torch is not counted
+var sets = new Set();   // 127 set items total
 
-def removeFromStash(e):
-  if "target" not in e.target.attrs:
-    if confirm("Click 'OK' to remove this item"):
+function addToStash(e) { 
+  if (!e.target.hasAttribute("target")) {
+    // append loot item with style.color. id ~ 'drop5-0'
+    var stashdiv = document.createElement("div");
+    stashdiv.innerHTML = e.target.html;
+    stashdiv.style.cssText = `color:${e.target.style.color}; cursor:pointer`;
+    stashdiv.className = "tooltip";
+    document.getElementById("stash").appendChild(stashdiv);
+    document.getElementById(e.target.id).remove();
+    // add confirmation window to stash item on click
+    stashdiv.addEventListener("click", removeFromStash);
+  };
+};
+
+function removeFromStash(e) {
+  if (!e.target.hasAttribute("target")) {
+    if (confirm("Click 'OK' to remove this item")) {
       e.target.remove()
+    }; };
+};
 
-def runx(e):
-  # reset loot text area and prepare variables
-  document["loottxt"].html = "Loot: <br><br>"
-  monstr = document["selectMon"].value + DIFFICULTIES[document["selectDiff"].value]
-  players_str = (document["selectPlayers"].value).split()[-1]
-  mf_str = document["mftext"].value
-  seed_str = document["seedtext"].value
-  tot_loot = {}  # alternative is to use a list. then take list.count(item).  both cases are ~k*o(n) complexity. the number of items is limited since only unis, sets, runes are kept
-  try:
-    xtimes = max(int(document["xtimes"].value), 1)
-  except:
-    xtimes = 1
-  d2iosearch_bool = document["d2iosearch"].checked
+function runx(e) {
+  // reset loot text area and prepare variables
+  document.getElementById("loottxt").innerHTML = "Loot: <br><br>";
+  
+  var monstr = document.getElementById("selectMon").value + DIFFICULTIES[document.getElementById("selectDiff").value];
+  var players_str = (document.getElementById("selectPlayers").value).split(' ')[1];
+  var mf_str = document.getElementById("mftext").value;
+  var seed_str = document.getElementById("seedtext").value;
 
-  for xt in range(xtimes):
-    drops = []
+  var tot_loot = {};  // alternative is to use a list. then take list.count(item).  both cases are ~k*o(n) complexity. the number of items is limited since only unis, sets, runes are kept
+  try {
+    var xtimes = Math.max(parseInt(document.getElementById("xtimes").value || 1), 1);
+  } catch {
+    var xtimes = 1;
+  }
+  var d2iosearch_bool = document.getElementById("d2iosearch").checked;
 
-    for i in range(TCPicks[document["selectMon"].value]):
-      if len(drops) == 6:
-        break
-      loot_items = final_rolls_from_tc(monstr, players_str, seed_str)  # Hell difficulty hard-coded
-      loot_items = [name_from_armo_weap_misc(it['rolleditemtc'], mf_str, it['rootclass']) for it in loot_items]   # expanded item names
-      if loot_items:
-        for loot_item in loot_items:
-            if len(drops) < 6:
-                drops.append(loot_item.replace("Charm Large", "Grand Charm").replace("Charm Medium", "Large Charm").replace("Charm Small", "Small Charm"))
-    for i, drop in enumerate(drops):
-      if "uni~" in drop:
-        if "failed uni~" in drop:
-          if 'potion' in drop.lower():
-            color = "#e8f4ff"         # default light
-          else:
-            color = "#e8e83a"     # yellow  
-            if "charm" in drop.lower():
-              color = "#4f7cfb"     # blue
-        else:
-          unis.add(drop)
-          document["grailUniques"].html = "Uniques Found: " + str(len(unis)) + "/379"
-          color = "#b77f00"     # gold
-      elif "set~" in drop:
-        if "failed set~" in drop:
-          if 'potion' in drop.lower():
-            color = "#e8f4ff"     # default light
-          else:
-            color = "#4f7cfb"   # blue
-        else:
-          sets.add(drop)
-          document["grailSets"].html = "Sets Found: " + str(len(sets)) + "/127"
-          color = "#11c511"     # green
-      elif "rare~" in drop:
-        if 'potion' in drop.lower():
-          color = "#e8f4ff"   # default light
-        else:
-          color = "#e8e83a"   # yellow  
-          if "charm" in drop.lower():
-            color = "#4f7cfb"     # blue
-      elif "magic~" in drop:
-        if 'potion' in drop.lower():
-          color = "#e8f4ff"   # default light
-        else:
-          color = "#4f7cfb"     # blue
-      elif "normal~" in drop:
-        color = "#e8f4ff"   # default light
-      elif ("essence of" in drop.lower() or " rune" in drop.lower() or "key of" in drop.lower() or "puzzlebox" in drop.lower()):
-        color = "#dc7409"     # orange
-      else:
-        # reset color
-        color = "#e8f4ff"         # default light
-      
-      # if xtimes > 1, add unique, set, and rune color
-      if d2iosearch_bool:
-        linkstr = "https://duckduckgo.com/?q=site:diablo2.io+" + "+".join(drop.split('~')[-1].split())
-      else:
-        linkstr = "https://duckduckgo.com/?q=diablo2.io+" + "+".join(drop.split('~')[-1].split())
-      tooltip = '<span class="tooltiptext"> <a href="' + linkstr + '" target="_blank" style="color:#3392e6"> Search Item </a> </span>'
-      if xtimes > 1:
-        if document["selectMon"].value == 'Cow' and not ('Gold' in drop or 'Potion' in drop or 'Arrows' in drop or 'Bolts' in drop or 'Scroll' in drop or 'Skeleton Key' in drop):
-          div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~')[-1] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
-          if div_str not in tot_loot:
-            tot_loot[div_str] = 1
-          else:
-            tot_loot[div_str] += 1
-        else:
-          # add drop if color is uni,set,orange
-          if color in ["#b77f00", "#11c511", "#dc7409"]:
-            div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~')[-1] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
-            # document["loottxt"].html += div_str  # div_str  has id  ~  id="drop-Tal Rune".  not like 'drop0-0' below
-            # add to total loot dict.  alternative is to use a list and list.append().  comp. cost is then shifted to list.count(item) afterwards
-            if div_str not in tot_loot:
-              tot_loot[div_str] = 1
-            else:
-              tot_loot[div_str] += 1
-      else:
-        div_str = '<div class="tooltip" id="drop' + str(xt) + "-" + str(i) + '" style="cursor: pointer; color:' + color + '">' + drop.split('~')[-1] + tooltip + '</div>'
-        document["loottxt"].html += div_str
+  for (var xt = 0; xt < xtimes; xt++) {
+    var drops = [];
 
-  if xtimes > 1:
-    count = sorted(tot_loot.items(), key=lambda x: x[0].split('">')[1].split('<span')[0])   # sorted divs by drop name -v' categories uni+set (have extra space at the start of string), then runes/keys
-    for k,v in count:
-      name = k.split('">')[1].split('<span')[0]  # get loot name between html tags
-      document["loottxt"].html += k.replace('>' + name, '>' + name + ' - ' + str(v), 1)  # replace 1st occurrence and add to html
+    for (var i = 0; i < TCPicks[document.getElementById("selectMon").value]; i++) {
+      if (drops.length === 6) {
+        break;
+      }
+      var loot_items = final_rolls_from_tc(monstr, players_str, seed_str);  // Hell difficulty hard-coded
+      for (var j = 0; j < loot_items.length; j++) {
+        loot_items[j] = name_from_armo_weap_misc(loot_items[j]['rolleditemtc'], mf_str, loot_items[j]['rootclass']);  // expanded item names
+      }
+      if (loot_items.length > 0) { 
+        for (var loot_item of loot_items) {
+            if (drops.length < 6) {
+                drops.push(loot_item.replace("Charm Large", "Grand Charm").replace("Charm Medium", "Large Charm").replace("Charm Small", "Small Charm"));
+            }; }; };
+    };
+    for (const [i, drop] of drops.entries()) {
+      if (drop.includes("uni~")) {
+        if (drop.includes("failed uni~")) { 
+          if (drop.toLowerCase().includes('potion')) {
+            var color = "#e8f4ff";         // default light
+          } else {
+            var color = "#e8e83a";     // yellow  
+            if (drop.toLowerCase().includes("charm")) {
+              color = "#4f7cfb";     // blue
+            }; };
+        } else {
+          unis.add(drop);
+          document.getElementById("grailUniques").innerHTML = "Uniques Found: " + unis.size.toString() + "/379";
+          var color = "#b77f00";     // gold
+        }
+      }else if (drop.includes("set~")) {
+        if (drop.includes("failed set~")) {
+          if (drop.toLowerCase().includes('potion')) {
+            var color = "#e8f4ff";     // default light
+          } else {
+            var color = "#4f7cfb";   // blue
+          }
+        } else {
+          sets.add(drop);
+          document.getElementById("grailSets").innerHTML = "Sets Found: " + sets.size.toString() + "/127";
+          var color = "#11c511";     // green
+        }
+      }else if (drop.includes("rare~")) {
+        if (drop.toLowerCase().includes('potion')) {
+          var color = "#e8f4ff";   // default light
+        } else {
+          var color = "#e8e83a";   // yellow  
+          if (drop.toLowerCase().includes("charm")) {
+            color = "#4f7cfb";     // blue
+          }; };
+      }else if (drop.includes("magic~")) {
+        if (drop.toLowerCase().includes('potion')) {
+          var color = "#e8f4ff";   // default light
+        } else {
+          var color = "#4f7cfb";     // blue
+        }
+      }else if (drop.includes("normal~")) {
+        var color = "#e8f4ff";   // default light
+      }else if (drop.toLowerCase().includes("essence of") || drop.toLowerCase().includes(" rune") || drop.toLowerCase().includes("key of") || drop.toLowerCase().includes("puzzlebox")) {
+        var color = "#dc7409";     // orange
+      }else {
+        // reset color
+        var color = "#e8f4ff";         // default light
+      }
+      // if xtimes > 1, add unique, set, and rune color
+      if (d2iosearch_bool) {
+        linkstr = "https://duckduckgo.com/?q=site:diablo2.io+" + drop.split('~').slice(-1)[0].split(' ').join("+");   // JS .slice(-1)[0]  like python's list[-1]
+      }else {
+        linkstr = "https://duckduckgo.com/?q=diablo2.io+" + drop.split('~').slice(-1)[0].split(' ').join("+");
+      }
+      var tooltip = '<span class="tooltiptext"> <a href="' + linkstr + '" target="_blank" style="color:#3392e6"> Search Item </a> </span>';
+      if (xtimes > 1) {
+        if (document.getElementById("selectMon").value === 'Cow' && !(drop.includes('Gold') || drop.includes('Potion') || drop.includes('Arrows') || drop.includes('Bolts') || drop.includes('Scroll') || drop.includes('Skeleton Key'))) {
+          var div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~').slice(-1)[0] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~').slice(-1)[0] + tooltip + '</div>';
+          if (!Object.keys(tot_loot).includes(div_str)) {
+            tot_loot[div_str] = 1;
+          }else {
+            tot_loot[div_str] += 1;
+          }
+        }else {
+          // add drop if color is uni,set,orange
+          if (["#b77f00", "#11c511", "#dc7409"].includes(color)) {
+            var div_str = '<div class="tooltip" id="drop' + "-" + drop.split('~').slice(-1)[0] + '" style="cursor: pointer; color:' + color + '">' + drop.split('~').slice(-1)[0] + tooltip + '</div>';
+            // document["loottxt"].html += div_str  // div_str  has id  ~  id="drop-Tal Rune".  not like 'drop0-0' below
+            // add to total loot dict.  alternative is to use a list and list.append().  comp. cost is then shifted to list.count(item) afterwards
+            if (!Object.keys(tot_loot).includes(div_str)) {
+              tot_loot[div_str] = 1;
+            }else {
+              tot_loot[div_str] += 1;
+            }; }; };
+      }else {
+        var div_str = '<div class="tooltip" id="drop' + xt.toString() + "-" + i.toString() + '" style="cursor: pointer; color:' + color + '">' + drop.split('~').slice(-1)[0] + tooltip + '</div>';
+        document.getElementById("loottxt").innerHTML += div_str;
+      }
+    }
+  }
+  if (xtimes > 1) {
+    // sorted divs by drop name -v' categories uni+set (have extra space at the start of string), then runes/keys
+    // create array for JS.   https://stackoverflow.com/questions/25500316/sort-a-dictionary-by-value-in-javascript  and  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+    var count = Object.keys(tot_loot).map( key => { return [key, tot_loot[key]]; } );
+    count.sort((a, b) => a[0].split('">')[1].split('<span')[0] - b[0].split('">')[1].split('<span')[0]);  // compare elements a,b of tor array and take the [0-th] index which includes the name
 
-  for child in document["loottxt"]:
-    # bind to id drop+str(i)
-    child.bind("click", addToStash)
+    for (var [k,v] of count) {
+      var namestr = k.split('">')[1].split('<span')[0];  // get loot name between html tags
+      document.getElementById("loottxt").innerHTML += k.replace('>' + namestr, '>' + namestr + ' - ' + v.toString());  // replace 1st occurrence and add to html
+    }; // NOTE***   the default .replace() behavior is to replace only the first match, to replace all occurrences need replace('/ /g', _)
+  }
+  var children = document.getElementById("loottxt").children;
+  for (var i = 0; i < children.length; i++) {
+    // bind to id drop+str(i)
+    children[i].addEventListener("click", addToStash);
+  }
+};
 
-document["run"].bind("click", runx)
-document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'.  Click an item to add it to the Stash. Click it in the Stash to remove it"
+document.getElementById("run").addEventListener("click", runx);
+// document["run"].bind("click", runx)
+document.getElementById("par-1").innerHTML = "<em>Loaded</em>. Ready to farm? click 'Run'.  Click an item to add it to the Stash. Click it in the Stash to remove it";
+// document["par-1"].html = "<em>Loaded</em>. Ready to farm? click 'Run'.  Click an item to add it to the Stash. Click it in the Stash to remove it"
 </script>
 
 </body>
