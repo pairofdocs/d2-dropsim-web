@@ -146,10 +146,10 @@ var unis = new Set();  // 379 uniques total.  a uni jewel is counted once. Hellf
 var sets = new Set();   // 127 set items total
 
 function addToStash(e) { 
-  if (!e.target.hasAttribute("target")) {
+  if (!e.target.hasAttribute("target") && !(e.target.className === "tooltiptext")) {
     // append loot item with style.color. id ~ 'drop5-0'
     var stashdiv = document.createElement("div");
-    stashdiv.innerHTML = e.target.html;
+    stashdiv.innerHTML = e.target.innerHTML;
     stashdiv.style.cssText = `color:${e.target.style.color}; cursor:pointer`;
     stashdiv.className = "tooltip";
     document.getElementById("stash").appendChild(stashdiv);
@@ -160,7 +160,7 @@ function addToStash(e) {
 };
 
 function removeFromStash(e) {
-  if (!e.target.hasAttribute("target")) {
+  if (!e.target.hasAttribute("target") && !(e.target.className === "tooltiptext")) {
     if (confirm("Click 'OK' to remove this item")) {
       e.target.remove()
     }; };
@@ -285,8 +285,12 @@ function runx(e) {
     // sorted divs by drop name -v' categories uni+set (have extra space at the start of string), then runes/keys
     // create array for JS.   https://stackoverflow.com/questions/25500316/sort-a-dictionary-by-value-in-javascript  and  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
     var count = Object.keys(tot_loot).map( key => { return [key, tot_loot[key]]; } );
-    count.sort((a, b) => a[0].split('">')[1].split('<span')[0] - b[0].split('">')[1].split('<span')[0]);  // compare elements a,b of tor array and take the [0-th] index which includes the name
-
+    // compare elements a,b of tor array and take the [0-th] index which includes the name .  a == b ? 0 : a > b ? 1 : -1;   (https://www.javascripttutorial.net/javascript-array-sort/)
+    count.sort((a, b) => {
+      a = a[0].split('">')[1].split('<span')[0];
+      b = b[0].split('">')[1].split('<span')[0];
+      return a == b ? 0 : a > b ? 1 : -1;
+    });
     for (var [k,v] of count) {
       var namestr = k.split('">')[1].split('<span')[0];  // get loot name between html tags
       document.getElementById("loottxt").innerHTML += k.replace('>' + namestr, '>' + namestr + ' - ' + v.toString());  // replace 1st occurrence and add to html
