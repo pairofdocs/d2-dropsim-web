@@ -37,14 +37,9 @@
       max-width:none;
     }
   </style>
-  <!-- <script type="text/javascript" src="./brython.js"></script> -->
-  <!-- <script type="text/javascript" src="./brython_modules.js"></script> -->
-  <!-- NOTE: could not use collections counter with only brython_modules.js -->
-  <!-- https://brython.info/static_doc/en/import.html   use optimized imports with brython_modules.js-->
   <script type="text/javascript" src="./data_util.js"></script>
 </head>
 
-<!-- <body onload="brython(1)"> -->
 <body>
   <h1> D2 and D2R Bossq and Monster Drop Simulator </h1>
   <p id="par-1"> Loading data takes a couple of seconds... </p>
@@ -135,9 +130,6 @@
 
 
 <script type="text/javascript">
-// from browser import document, html, confirm
-// from data_util import final_rolls_from_tc, name_from_armo_weap_misc
-
 var DIFFICULTIES = {'Normal': '', 'Nightmare': ' (N)', 'Hell': ' (H)'};
 var TCPicks = {"Andarielq": 7, "Durielq": 5, "Mephistoq": 7, "Diabloq": 7, "Baalq": 7, "Cow": 1, "Countess": 1, "Council": 3};  // data from TreasureClassEx.txt
 var TCPicks2 = {"Andariel": 7, "Duriel": 5, "Mephisto": 7, "Diablo": 7, "Baal": 7, "Cow King": 5, "Nihlathak": 5, "Eldritch": 1, "Pindleskin": 1};  // 1 --> -4 for superuniques
@@ -178,7 +170,7 @@ function runx(e) {
   var tot_loot = {};  // alternative is to use a list. then take list.count(item).  both cases are ~k*o(n) complexity. the number of items is limited since only unis, sets, runes are kept
   try {
     var xtimes = Math.max(parseInt(document.getElementById("xtimes").value || 1), 1);
-  } catch(e) {
+  }catch(e) {
     var xtimes = 1;
   }
   var d2iosearch_bool = document.getElementById("d2iosearch").checked;

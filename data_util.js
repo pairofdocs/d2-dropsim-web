@@ -74,7 +74,7 @@ function one_roll_from_tc(tc_name_str, players_str) {
         } else if (players_int > 8) {
             players_int = 8;
         }
-    } catch(e) {
+    }catch(e) {
         var players_int = 1;
     };
     //no drop exponent.  /players 1 or 2 -> nd_exp 1,   3 or 4 -> nd_exp 2,    5 or 6 -> nd_exp 3,     7 or 8 -> nd_exp 4
@@ -142,7 +142,7 @@ function final_rolls_from_tc(tc_name_str, players_str, seed_str) {
                 outcomes = outcomes.concat(nested_rolls_in_tc(tc_roll, players_str, qboss, positive_picks=false, neg_root_tc=tc_name_str));
             }; };
         outcomes = outcomes.slice(0,6) // take the first 6, remove any extra drops 
-    } else {  
+    }else {  
         // rootpicknum > 0
         outcomes = nested_rolls_in_tc(tc_name_str, players_str, qboss, positive_picks=true, neg_root_tc='');
     };
@@ -156,7 +156,7 @@ function nested_rolls_in_tc(tc_name_str, players_str, qboss, positive_picks=true
     // get first inner pick and pick number.  (remove 'mul='  if gld is picked)
     if (positive_picks) {
         var tc_name_str1 = one_roll_from_tc(tc_name_str, players_str).split(',mul=')[0];
-    } else {
+    }else {
         var tc_name_str1 = tc_name_str  // e.g. 'Countess Item'. one_roll_from_tc is not used since it randomly chooses a pick. a sequence of picks is used
     }
     var inner_pick_num = 0;
@@ -167,10 +167,10 @@ function nested_rolls_in_tc(tc_name_str, players_str, qboss, positive_picks=true
             var rowdict = TCDICT[tc_name_str1];
             if (rowdict['Picks']) {
                 inner_pick_num = parseInt(rowdict['Picks']);
-            } else {
+            }else {
                 inner_pick_num = 1;
             }
-        } else {
+        }else {
             // 'tsc', 'gld' rolled and it's not a row in the TCDICT
             outcomes.push({'rolleditemtc': tc_name_str1, 'rootclass': tc_name_str});      // when not 'Durielq - Base' rolled from Durielq
         }; };
@@ -205,7 +205,7 @@ function roll_from_armo_weap_lvl(item_str) {
     var type_str = item_str.substr(0,4);
     if (type_str === "armo") { 
         var itemdict = ARMORDICT;
-    } else {
+    }else {
         var itemdict = WEAPDICT;
     };
     var lvl = parseInt(item_str.substr(4,));
@@ -222,7 +222,7 @@ function roll_from_armo_weap_lvl(item_str) {
             // account for rarity = '' in data.  weapons.txt rarity is for chests.  look at itemtypes.txt
             try {
                 var rarity = parseInt(ITEMTYPESDICT[v['type']]['Rarity']) || 3;  // e.g [3, 3, 3, 3, 3, 3, 1, 3, 3, 2, 1] for 'weap09'  axe-3, wristblade-2, orb-1
-            } catch(e) {
+            }catch(e) {
                 var rarity = 3;  // default to 3 for normal (non class specific items)
             };
             probs.push(rarity);
@@ -259,17 +259,17 @@ function get_mlvl(mon_str) {
 
     if (mon_name.substr(0,4) === 'baal') {
         mon_name = 'baalcrab';
-    } else if (mon_name.substr(0,8) === 'cow king') {
+    }else if (mon_name.substr(0,8) === 'cow king') {
         mon_name = 'cow king';
-    } else if (mon_name.substr(0,3) === 'cow') {
+    }else if (mon_name.substr(0,3) === 'cow') {
         // account for 'Cow King' if he's added to the tclist
         mon_name = 'hellbovine';
-    } else if (mon_name.substr(0,7) === 'council') {
+    }else if (mon_name.substr(0,7) === 'council') {
         mon_name = 'councilmember1';
     }
     if (mon_str.includes('(')) {
         var mon_diffi = '(' + mon_str.split(' (')[1];
-    } else {
+    }else {
         var mon_diffi = '';  // '', '(N)', '(H)'
     }
     if (mon_name.endsWith('q')) {
@@ -277,7 +277,7 @@ function get_mlvl(mon_str) {
     if (['countess', 'cow king', 'eldritch', 'pindleskin'].includes(mon_name.toLowerCase())) {
         // account for monsters not in monstats.txt
         var mlvl = parseInt(MONSTATSDICT_EXTRA[mon_name.toLowerCase()]['Level'+mon_diffi]);
-    } else {
+    }else {
         var mlvl = parseInt(MONSTATSDICT[mon_name]['Level'+mon_diffi]);
     }
     return mlvl;
@@ -306,7 +306,7 @@ function name_from_armo_weap_misc(item_str, mf_str, mon_str) {
                     if (!success) {
                         out_name = 'normal~ ' + out_name;
                     }; }; }; };
-    } else { 
+    }else { 
         // else misc
         var success;
         var [out_name, level] = name_from_misc(item_str);
@@ -346,7 +346,7 @@ function check_uni_or_set(name_str, level_str, is_class_spec, mlvl_int, mon_str,
     var qlvl = parseInt(level_str);  // level column in armor/weapon.txt.  quality lvl of base item
     if (is_class_spec){
         var row = ITEMRATIO[4];    // 'Unique': '240'
-    } else {
+    }else {
         var row = ITEMRATIO[2];    // 'Unique': '400'
     }
     if (qual_type === 'uni') {
@@ -356,20 +356,20 @@ function check_uni_or_set(name_str, level_str, is_class_spec, mlvl_int, mon_str,
         var qual_col = TCDICT[mon_str]['Unique'];
         // MF diminishing returns factor is 250 for unique, 500 for set and 600 for rare
         var factor = 250;
-    } else if (qual_type === 'set') {
+    }else if (qual_type === 'set') {
         var qual = parseInt(row['Set']);
         var qual_divisor = parseInt(row['SetDivisor']);
         var qual_min = parseInt(row['SetMin']);
         var qual_col = TCDICT[mon_str]['Set'];
         var factor = 500;
-    } else if (qual_type === 'rar'){
+    }else if (qual_type === 'rar'){
         // quest drop always has success on rare item roll. This matches TCX values of 1024 for Rare, Magic cols
         var qual = parseInt(row['Rare']);
         var qual_divisor = parseInt(row['RareDivisor']);
         var qual_min = parseInt(row['RareMin']);
         var qual_col = TCDICT[mon_str]['Rare'];
         var factor = 600;
-    } else {
+    }else {
         var qual = parseInt(row['Magic']);
         var qual_divisor = parseInt(row['MagicDivisor']);
         var qual_min = parseInt(row['MagicMin']);
@@ -377,7 +377,7 @@ function check_uni_or_set(name_str, level_str, is_class_spec, mlvl_int, mon_str,
     }
     if (qual_col) {
         qual_col = parseInt(qual_col);
-    } else {
+    }else {
         qual_col = 0;
     }
     // (BaseChance - ((mlvl_int-qlvl)/Divisor)) * 128    https://www.purediablo.com/forums/threads/item-generation-tutorial.110/
@@ -386,12 +386,12 @@ function check_uni_or_set(name_str, level_str, is_class_spec, mlvl_int, mon_str,
     // take abs() of mf if the input can be parsed to an int
     try {
         var mf = Math.abs(parseInt(mf_str)) || 0;
-    } catch(e) {
+    }catch(e) {
         var mf = 0;
     }
     if (qual_type !== 'mag') {
         var effect_mf = mf*factor/(mf+factor);
-    } else {
+    }else {
         var effect_mf = mf;
     }
     chance = (chance*100)/(100 + effect_mf);
@@ -404,7 +404,7 @@ function check_uni_or_set(name_str, level_str, is_class_spec, mlvl_int, mon_str,
         // either unique or failed unique. (and set/ failed set)  for quest drops.   non quest monsters can have uni, set, rare, magic, normal
         // TODO: charms either gheeds or magic(blue)
         var out_str = check_if_qlvl_works(name_str, mlvl_int, mon_str, qual_type);
-    } else {
+    }else {
         var out_str = name_str;
     }
     return [out_str, roll_success];
@@ -439,13 +439,13 @@ function check_if_qlvl_works(name_str, ilvl, mon_str, qual_type='uni') {
         quallist = UNIQUES;
         var namecol = '*type';
         var prefix = "uni~ ";
-    } else if (qual_type === 'set') {
+    }else if (qual_type === 'set') {
         quallist = SETS;
         var namecol = '*item';
         var prefix = "set~ ";
-    } else if (qual_type === 'rar') {
+    }else if (qual_type === 'rar') {
         var prefix = "rare~ ";
-    } else {
+    }else {
         var prefix = "magic~ ";
     }
     if (quallist) {
@@ -465,7 +465,7 @@ function check_if_qlvl_works(name_str, ilvl, mon_str, qual_type='uni') {
                     };};};};}
     if (possible_items.length > 0) {
         var outname = prefix + rand_choices(possible_items, probs);
-    } else {
+    }else {
         // undo the large charm rename from above
         if (name_str === 'charm') {
             name_str = 'Charm Large';
