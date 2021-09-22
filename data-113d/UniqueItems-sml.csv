@@ -392,12 +392,12 @@ Ondal's Wisdom,1,74,66,6cs,elder staff
 The Reedeemer,1,80,72,7sc,mighty scepter
 Headhunter's Glory,1,83,75,ush,troll nest
 Steelrend,1,78,70,uhg,ogre gauntlets
-Rainbow Facet,1,85,49,jew,jewel
-Rainbow Facet,1,85,49,jew,jewel
-Rainbow Facet,1,85,49,jew,jewel
-Rainbow Facet,1,85,49,jew,jewel
-Rainbow Facet,1,85,49,jew,jewel
-Rainbow Facet,1,85,49,jew,jewel
-Rainbow Facet,1,85,49,jew,jewel
-Rainbow Facet,1,85,49,jew,jewel
+Rainbow Facet Cold-Up,1,85,49,jew,jewel
+Rainbow Facet Cold-Die,1,85,49,jew,jewel
+Rainbow Facet Fire-Up,1,85,49,jew,jewel
+Rainbow Facet Fire-Die,1,85,49,jew,jewel
+Rainbow Facet Light-Up,1,85,49,jew,jewel
+Rainbow Facet Light-Die,1,85,49,jew,jewel
+Rainbow Facet Pois-Up,1,85,49,jew,jewel
+Rainbow Facet Pois-Die,1,85,49,jew,jewel
 Hellfire Torch,1,110,75,cm2,charm
