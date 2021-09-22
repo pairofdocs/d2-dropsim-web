@@ -93,7 +93,7 @@
         </div>
         
         <button id="run" style="margin: 1em 0 1em;"> Run x times </button> 
-        <input type="text" id="xtimes" name="xtimes" size="1" value="1" style="text-align: center;"> If x > 1 only uniques, sets and runes/essences/uber keys are kept as loot
+        <input type="text" id="xtimes" name="xtimes" size="2" value="1" style="text-align: center; width: 2.5em;"> If x > 1 only uniques, sets and runes/essences/uber keys are kept as loot
       </td>
       <td style="padding: 0 0 0 4em;">
         <div id="grailUniques" style="color: #b77f00; text-align: center;"> Uniques Found: 0/379</div>
@@ -178,7 +178,7 @@ function runx(e) {
   var tot_loot = {};  // alternative is to use a list. then take list.count(item).  both cases are ~k*o(n) complexity. the number of items is limited since only unis, sets, runes are kept
   try {
     var xtimes = Math.max(parseInt(document.getElementById("xtimes").value || 1), 1);
-  } catch {
+  } catch(e) {
     var xtimes = 1;
   }
   var d2iosearch_bool = document.getElementById("d2iosearch").checked;
